@@ -1,58 +1,42 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed;
-    private bool isMoving;
-    private Vector2 input;
-    private Animator animator;
-    private void Awake()
+  public float moveSpeed;
+  private bool isMoving;
+  private Animator animator;
+  private void Awake()
+  {
+      animator = GetComponent<Animator>();
+  }
+    public float speed = 5f;
+    private bool IsRunning = false;
+
+    void Update()
     {
-        animator = GetComponent<Animator>();
+        float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveVertical = Input.GetAxis("Vertical");
+        Debug.log("movimiento x:", moveHorizonral);
+        Debug.log("movimiento y:", moveVertical);
+
+        Vector2 movement = new Vector2(moveHorizontal, moveVertical);
+        GetComponent<Rigidbody2D>().velocity = movement * speed;
+        if (!IsRunning && Input.GetKey(KeyCode.Space))
+        {
+            IsRunning = true;
+            speed = 15f;
+        }
+        else if (IsRunning && !Input.GetKey(KeyCode.Space))
+        {
+
+             IsRunning = false;
+             speed = 5f;
+        
+        }
+      animator.SetBool("isMoving", isMoving);
     }
 
-    private void Update()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (isMoving!=true)
-        {
-            input.x = Input.GetAxisRaw("Horizontal");
-            input.y = Input.GetAxisRaw("Vertical");
-            
-            Debug.Log("This is input.x" + input.x);
-            Debug.Log("This is input.y" + input.y);
-
-            animator.SetFloat("MoveX", input.x);
-            animator.SetFloat("MoveY", input.y);
-
-            if (input != Vector2.zero)
-            {
-                var targetPos = transform.position;
-                targetPos.x += input.x;
-                targetPos.y += input.y;
-
-                StartCoroutine(Move(targetPos));
-            }
-        }
-
-        animator.SetBool("isMoving", isMoving);
     }
-
-
-    IEnumerator Move(Vector3 targetPos)
-    {   
-        isMoving=true; 
-        while ((targetPos - transform.position).sqrMagnitude > Mathf.Epsilon)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed*Time.deltaTime);
-            yield return null;
-        }
-        transform.position = targetPos;
-        isMoving=false;
-    }
-
-
-
-
 }
