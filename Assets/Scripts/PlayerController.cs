@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speed = 5f;
-    public float runningSpeed = 15f; // New variable to store running speed
+    public float runningSpeed = 15f;
     private bool isRunning = false;
     private Animator animator;
 
@@ -31,17 +31,16 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("isMoving", false);
         }
-         
-        // Check for running input
+        
         if (!isRunning && Input.GetKey(KeyCode.Space))
         {
             isRunning = true;
-            speed = runningSpeed; // Switch to running speed
+            speed = runningSpeed;
         }
         else if (isRunning && !Input.GetKey(KeyCode.Space))
         {
             isRunning = false;
-            speed = 5f; // Switch back to normal speed
+            speed = 5f;
         }
     }
 }
