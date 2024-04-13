@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Door
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -44,4 +45,7 @@ TagManager:
     locked: 0
   - name: player
     uniqueID: 3228634929
+    locked: 0
+  - name: Flag
+    uniqueID: 107007935
     locked: 0
