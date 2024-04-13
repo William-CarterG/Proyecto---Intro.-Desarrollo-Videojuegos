@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class changedScene : MonoBehaviour
 {
+    public string sceneName;
     void OnTriggerEnter2D(Collider2D other)
     {
         // Verificar si el objeto que entró en el trigger tiene el tag "Player"
@@ -12,7 +13,7 @@ public class changedScene : MonoBehaviour
         {
             // Cambiar a la siguiente escena
             Debug.Log("CAMBIO DE ESCENA");
-            SceneManager.LoadScene("piso1");
+            SceneManager.LoadScene(sceneName);
         }
     }
 }
