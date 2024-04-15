@@ -12,7 +12,16 @@ public class PlayerHealth : MonoBehaviour
 
     void Start()
     {
+        // Configurar currentHealth con startingHealth
         currentHealth = startingHealth;
+
+        // Sobrescribir currentHealth con el valor guardado en PlayerPrefs, si existe
+        if (PlayerPrefs.HasKey("PlayerHealthActual"))
+        {
+            currentHealth = PlayerPrefs.GetInt("PlayerHealthActual");
+        }
+
+        // Actualizar el UI de la salud
         UpdateHealthUI();
     }
 
@@ -21,10 +30,11 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth -= damageAmount;
         UpdateHealthUI();
-
+        PlayerPrefs.SetInt("PlayerHealthActual", currentHealth);
         // Comprobar si el jugador ha perdido todas las vidas
         if (currentHealth <= 0)
         {
+            PlayerPrefs.DeleteKey("PlayerHealthActual");
             Debug.Log("Game Over");
             SceneManager.LoadScene("GameOver");
         }
