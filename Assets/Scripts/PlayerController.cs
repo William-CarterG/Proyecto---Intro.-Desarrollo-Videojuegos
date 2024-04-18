@@ -5,12 +5,16 @@ public class PlayerController : MonoBehaviour
 {
     public float speed = 5f;
     public float runningSpeed = 15f;
+
+    private bool isMoving;
     private bool isRunning = false;
     private Animator animator;
+    private Rigidbody2D rb;
 
     void Start()
     {
         animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
@@ -18,29 +22,55 @@ public class PlayerController : MonoBehaviour
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
-        Vector2 movement = new Vector2(moveHorizontal, moveVertical);
-        GetComponent<Rigidbody2D>().velocity = movement * speed;
+        MovePlayer(moveHorizontal, moveVertical);
+        UpdateAnimator(moveHorizontal, moveVertical);
+        UpdateRunningState();
+    }
 
-        if (movement.magnitude > 0)
+  void MovePlayer(float horizontal, float vertical)
+{
+    Vector2 movement = new Vector2(horizontal, vertical);
+    if (movement.magnitude > 0)
+    {
+        rb.velocity = movement * (isRunning ? runningSpeed : speed);
+    }
+    else
+    {
+        rb.velocity = Vector2.zero; // Detener el movimiento cuando no hay entrada de movimiento
+    }
+}
+
+    void UpdateAnimator(float horizontal, float vertical)
+    {
+        if (horizontal != 0 || vertical != 0)
         {
-            animator.SetFloat("MoveX", movement.x);
-            animator.SetFloat("MoveY", movement.y);
-            animator.SetBool("isMoving", true);
+            animator.SetFloat("moveX", horizontal);
+            animator.SetFloat("moveY", vertical);
+            if (!isMoving)
+            {
+                isMoving = true;
+                animator.SetBool("isMoving", true);
+            }
         }
         else
         {
-            animator.SetBool("isMoving", false);
+            if (isMoving)
+            {
+                isMoving = false;
+                animator.SetBool("isMoving", false);
+            }
         }
-        
-        if (!isRunning && Input.GetKey(KeyCode.Space))
+    }
+
+    void UpdateRunningState()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             isRunning = true;
-            speed = runningSpeed;
         }
-        else if (isRunning && !Input.GetKey(KeyCode.Space))
+        else if (Input.GetKeyUp(KeyCode.Space))
         {
             isRunning = false;
-            speed = 5f;
         }
     }
 }
