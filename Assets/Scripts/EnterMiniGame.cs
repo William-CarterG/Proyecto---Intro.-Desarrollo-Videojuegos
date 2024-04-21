@@ -7,27 +7,29 @@ public class EnterMiniGame : MonoBehaviour
 {
     public string sceneToLoad;
     public int completed;
+    private ShowText ZoneScript;
+    private CollectedScript Inventory;
+    private SaveLoadPlayerState SavingScript;
+
+    private void Start()
+    {
+        ZoneScript = GetComponent<ShowText>();
+        GameObject PlayerObject = GameObject.Find("Player");
+        Inventory = PlayerObject.GetComponent<CollectedScript>();
+        SavingScript = GameObject.FindWithTag("Player").GetComponent<SaveLoadPlayerState>();
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
 
-            // Load the specified scene
-            /*
-             * GameObject player = GameObject.FindWithTag("Player");
-            if (player != null)
+            if (ZoneScript.playerInside && Inventory.CanAccessPuzzle())
             {
-                // Obtener la posición del objeto "Player"
-                Vector3 playerPosition = player.transform.position;
-                Debug.Log("Player position: " + playerPosition);
+                SavingScript.SaveAll();
+                SceneManager.LoadScene(sceneToLoad);
             }
-                        completed = PlayerPrefs.GetInt("MiniGameCompleted1");
-            Debug.Log("In EnterMiniGame [ANTES]: "+completed);
-            PlayerPrefs.SetInt("MiniGameCompleted1", 1);
-            completed = PlayerPrefs.GetInt("MiniGameCompleted1");
-            Debug.Log("In EnterMiniGame [DESPUES]: " + completed);
-            */
-            SceneManager.LoadScene(sceneToLoad);
+            Debug.Log(Inventory.CanAccessPuzzle());
         }
     }
 }

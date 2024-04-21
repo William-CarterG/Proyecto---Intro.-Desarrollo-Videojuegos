@@ -6,7 +6,8 @@ public class ShowText : MonoBehaviour
 {
     public GameObject floatingTextPrefab;
     public Canvas canvas; 
-    public float despawnDelay = 2f; 
+    public float despawnDelay = 2f;
+    public bool playerInside = false;
 
     private GameObject floatingTextInstance;
 
@@ -23,6 +24,8 @@ public class ShowText : MonoBehaviour
             floatingTextInstance = Instantiate(floatingTextPrefab, screenPosition, Quaternion.identity, canvas.transform);
 
             StartCoroutine(DespawnText());
+
+            playerInside = true;
         }
     }
 
@@ -36,6 +39,8 @@ public class ShowText : MonoBehaviour
             {
                 Destroy(floatingTextInstance);
             }
+
+            playerInside = false;
         }
     }
 

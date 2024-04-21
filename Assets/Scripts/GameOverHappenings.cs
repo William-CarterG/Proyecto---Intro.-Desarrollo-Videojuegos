@@ -2,26 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthScript : MonoBehaviour
+public class GameOverHappenings : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
     {
-        
+        PlayerPrefs.DeleteKey("Inventory");
     }
 
     // Update is called once per frame
     void Update()
     {
         
-       
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-
-        }
     }
 }

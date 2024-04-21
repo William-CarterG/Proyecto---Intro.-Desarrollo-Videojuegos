@@ -8,10 +8,23 @@ public class PlayerHealth : MonoBehaviour
 {
     public int startingHealth = 5; // Vidas iniciales
     public int currentHealth; // Vidas actuales
-    public GameObject[] hearts;
+    private GameObject[] hearts;
+    public GameObject HealthMeter;
 
     void Start()
     {
+
+        HealthMeter = GameObject.Find("HealthMeter");
+        hearts = new GameObject[5];
+
+        if (HealthMeter != null)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                hearts[i] = HealthMeter.transform.Find("h" + (i + 1)).gameObject;
+            }
+        }
+
         // Configurar currentHealth con startingHealth
         currentHealth = startingHealth;
 

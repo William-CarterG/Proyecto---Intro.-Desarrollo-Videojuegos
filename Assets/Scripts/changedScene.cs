@@ -6,6 +6,12 @@ using UnityEngine.SceneManagement;
 public class changedScene : MonoBehaviour
 {
     public string sceneName;
+    private SaveLoadPlayerState SavingScript;
+
+    void Start()
+    {
+        SavingScript = GameObject.FindWithTag("Player").GetComponent<SaveLoadPlayerState>();
+    }
     void OnTriggerEnter2D(Collider2D other)
     {
         // Verificar si el objeto que entró en el trigger tiene el tag "Player"
@@ -13,6 +19,7 @@ public class changedScene : MonoBehaviour
         {
             // Cambiar a la siguiente escena
             Debug.Log("CAMBIO DE ESCENA");
+            SavingScript.SaveAll();
             SceneManager.LoadScene(sceneName);
         }
     }
