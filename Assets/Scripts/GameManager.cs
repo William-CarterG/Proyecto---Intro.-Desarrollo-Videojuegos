@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     private string selectedPosition1 = "";
     private bool selected2 = false;
     private string selectedPosition2 = "";
+    private int sceneSave;
 
     private Transform[,] initialPiecesArray; // Matriz para almacenar la disposición inicial de las piezas
     private bool waitBeforeChecking = true;
@@ -218,6 +219,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        sceneSave = PlayerPrefs.GetInt("SaveScene");
         CreateGamePieces(0.01f);
 
         // Copiar la disposición inicial de las piezas
@@ -230,8 +232,8 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        Invoke("ShufflePuzzle", 5f);
-        Invoke("DisableWaitBeforeChecking", 5f);
+        Invoke("ShufflePuzzle", 2f);
+        Invoke("DisableWaitBeforeChecking", 3f);
     }
 
     void Update()
@@ -242,7 +244,8 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("¡Rompecabezas resuelto!");
             PlayerPrefs.SetInt("MiniGameCompleted1", 1);
-            SceneManager.LoadScene("piso1");
+            PlayerPrefs.DeleteKey("SaveScene");
+            SceneManager.LoadScene(sceneSave);
             // Aquí puedes agregar cualquier código adicional para manejar la finalización del juego.
         }
     }

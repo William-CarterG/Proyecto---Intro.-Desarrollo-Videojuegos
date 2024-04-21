@@ -28,6 +28,7 @@ public class EnterMiniGame : MonoBehaviour
             {
                 SavingScript.SaveAll();
                 SceneManager.LoadScene(sceneToLoad);
+                PlayerPrefs.SetInt("SaveScene", SceneManager.GetActiveScene().buildIndex);
             }
             Debug.Log(Inventory.CanAccessPuzzle());
         }

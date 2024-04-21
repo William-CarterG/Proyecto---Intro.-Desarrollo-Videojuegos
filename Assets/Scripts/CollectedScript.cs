@@ -11,6 +11,7 @@ public class CollectedScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         LoadInventory();
     }
 
@@ -26,10 +27,36 @@ public class CollectedScript : MonoBehaviour
     }
 
     public bool CanAccessPuzzle()
-    {
+    {/*
         List<string> puzzlePieces = new List<string> { "PuzzlePiece1", "PuzzlePiece2", "PuzzlePiece3",
                                                         "PuzzlePiece4", "PuzzlePiece5", "PuzzlePiece6",
                                                         "PuzzlePiece7", "PuzzlePiece8", "PuzzlePiece9" };
+        */
+        // Lista para almacenar los nombres de los hijos
+        List<string> puzzlePieces = new List<string>();
+        GameObject puzzle = GameObject.Find("collectibles");
+        // Verificar si el objeto padre existe
+        if (puzzle != null)
+        {
+
+
+            // Obtener todos los hijos del objeto padre
+            foreach (Transform hijo in puzzle.transform)
+            {
+                // Agregar el nombre del hijo a la lista
+                puzzlePieces.Add(hijo.name);
+            }
+
+            // Imprimir los nombres de los hijos en la consola (opcional)
+            foreach (string nombre in puzzlePieces)
+            {
+                Debug.Log("Nombre del hijo: " + nombre);
+            }
+        }
+        else
+        {
+            return false;
+        }
         foreach (string piece in puzzlePieces)
         {
             if (!collectedItems.Contains(piece))
