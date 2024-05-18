@@ -5,13 +5,16 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 5f;
-    public float runningSpeed = 15f;
-    public float stunDuration = 2.5f;
+    public float speed = 1f;
+    public float maxSpeed = 15f;
+    public float stunDuration = 0.5f;
     private float cameraShakeIntensity = 0.25f;
+    public float acceleration = 0.75f;
+    private float currentSpeed;
+    public float zoomAmount = 4f;
+    private Vector2 lastDirection;
 
     private bool isMoving;
-    private bool isRunning = false;
     private bool isStunned = false;
     private Animator animator;
     private Rigidbody2D rb;
@@ -31,22 +34,37 @@ public class PlayerController : MonoBehaviour
 
             MovePlayer(moveHorizontal, moveVertical);
             UpdateAnimator(moveHorizontal, moveVertical);
-            UpdateRunningState();
+            //UpdateRunningState();
         }
     }
 
-  void MovePlayer(float horizontal, float vertical)
-{
+    void MovePlayer(float horizontal, float vertical)
+    {
         Vector2 movement = new Vector2(horizontal, vertical).normalized;
-    if (movement.magnitude > 0)
-    {
-        rb.velocity = movement * (isRunning ? runningSpeed : speed);
+
+        if (movement.magnitude > 0)
+        {
+            // Verifica si el jugador ha cambiado de dirección
+            if (movement != lastDirection)
+            {
+                currentSpeed = speed; // Reinicia la velocidad actual
+                lastDirection = movement; // Actualiza la última dirección
+            }
+
+            // Incrementa la velocidad actual
+            currentSpeed += acceleration * (Time.deltaTime/3);
+            currentSpeed = Mathf.Min(currentSpeed, maxSpeed); // Limita la velocidad actual
+            Debug.Log(currentSpeed);
+
+            rb.velocity = movement * currentSpeed;
+        }
+        else
+        {
+            rb.velocity = Vector2.zero; // Detener el movimiento cuando no hay entrada de movimiento
+            currentSpeed = speed; // Reinicia la velocidad actual
+            lastDirection = Vector2.zero; // Reinicia la última dirección
+        }
     }
-    else
-    {
-        rb.velocity = Vector2.zero; // Detener el movimiento cuando no hay entrada de movimiento
-    }
-}
 
     void UpdateAnimator(float horizontal, float vertical)
     {
@@ -70,7 +88,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void UpdateRunningState()
+    
+    /*void UpdateRunningState()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -80,10 +99,10 @@ public class PlayerController : MonoBehaviour
         {
             isRunning = false;
         }
-    }
+    }*/
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(isRunning & collision.gameObject.tag == "Walls")
+        if((currentSpeed >= (maxSpeed - 0.5f)) & collision.gameObject.tag == "Walls")
         {
             EditorApplication.Beep();
             Debug.Log("ATURDIDO");
@@ -114,7 +133,7 @@ public class PlayerController : MonoBehaviour
 
         // Restablecer el estado del jugador después del aturdimiento
         isStunned = false;
-        isRunning = false;
+        //isRunning = false;
 
         // Restaurar la posición inicial del jugador
         transform.position = initialPosition;
@@ -122,23 +141,30 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator CameraShake()
     {
-        Vector3 originalPosition = Camera.main.transform.localPosition;
-
-        float elapsedTime = 0f;
-
-        while (elapsedTime < stunDuration)
         {
-            float x = UnityEngine.Random.Range(-1f, 1f) * cameraShakeIntensity;
-            float y = UnityEngine.Random.Range(-1f, 1f) * cameraShakeIntensity;
+            Vector3 originalPosition = Camera.main.transform.localPosition;
+            float originalSize = Camera.main.orthographicSize;
 
-            Camera.main.transform.localPosition = originalPosition + new Vector3(x, y, 0);
+            float elapsedTime = 0f;
 
-            elapsedTime += Time.deltaTime;
+            while (elapsedTime < stunDuration)
+            {
+                float x = UnityEngine.Random.Range(-1f, 1f) * cameraShakeIntensity;
+                float y = UnityEngine.Random.Range(-1f, 1f) * cameraShakeIntensity;
 
-            yield return null;
+                Camera.main.transform.localPosition = originalPosition + new Vector3(x, y, 0);
+
+                // Aplicar el zoom suave
+                Camera.main.orthographicSize = Mathf.Lerp(originalSize, originalSize - zoomAmount, elapsedTime / stunDuration);
+
+                elapsedTime += Time.deltaTime;
+
+                yield return null;
+            }
+
+            // Restablecer la posición y el tamaño de la cámara al final de la vibración
+            Camera.main.transform.localPosition = originalPosition;
+            Camera.main.orthographicSize = originalSize;
         }
-
-        // Restablecer la posición de la cámara al final de la vibración
-        Camera.main.transform.localPosition = originalPosition;
     }
 }
