@@ -83,7 +83,7 @@ public class PlayerController : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(isRunning)
+        if(isRunning & collision.gameObject.tag == "Walls")
         {
             EditorApplication.Beep();
             Debug.Log("ATURDIDO");
