@@ -10168,6 +10168,10 @@ PrefabInstance:
       propertyPath: hearts.Array.data[4]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3362574490073640296, guid: 011c742c77eb81144bffe48686dec102, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1154077142, guid: 41c496919029944499c2f306f1436c3a, type: 3}
     - target: {fileID: 6744352224243214773, guid: 011c742c77eb81144bffe48686dec102, type: 3}
       propertyPath: m_IsTrigger
       value: 0
