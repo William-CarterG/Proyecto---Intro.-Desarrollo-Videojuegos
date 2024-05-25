@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PuzzleS/PuzzleScene.unity
     guid: 011a89911c6fae04ab59c717dda6b7ba
+  - enabled: 1
+    path: Assets/Scenes/PuzzleS/Poem.unity
+    guid: 03866d46a60752d459025c27cfe6e16b
   m_configObjects: {}
