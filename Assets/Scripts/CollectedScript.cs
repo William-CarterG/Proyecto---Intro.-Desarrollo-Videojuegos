@@ -11,8 +11,12 @@ public class CollectedScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         LoadInventory();
+    }
+
+    void Update()
+    {
+        CheckForKeyClick();
     }
 
 
@@ -21,11 +25,29 @@ public class CollectedScript : MonoBehaviour
         if (collision.CompareTag("Collectible"))
         {
             CollectibleScript collectibleScript = collision.GetComponent<CollectibleScript>();
-            collectedItems.Add(collectibleScript.Name);
             collectibleScript.collected();
         }
     }
 
+    private void CheckForKeyClick()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
+
+            if (hit.collider != null && hit.collider.CompareTag("CollectibleKey"))
+            {
+                CollectibleScript collectibleScript = hit.collider.GetComponent<CollectibleScript>();
+                if (collectibleScript != null)
+                {
+                    collectedItems.Add(collectibleScript.Name);
+                    collectibleScript.collected();
+                }
+            }
+        }
+    }
+    
     public bool CanAccessPuzzle()
     {/*
         List<string> puzzlePieces = new List<string> { "PuzzlePiece1", "PuzzlePiece2", "PuzzlePiece3",
@@ -67,6 +89,7 @@ public class CollectedScript : MonoBehaviour
         return true;
     }
 
+
     public void IsItemCollected(string itemName, Action<bool> callback)
     {
         if (collectedItems.Count == 0)
@@ -77,6 +100,11 @@ public class CollectedScript : MonoBehaviour
         {
             callback(collectedItems.Contains(itemName));
         }
+    }
+
+    public bool IsKeyCollected(string keyName)
+    {
+        return collectedItems.Contains(keyName);
     }
 
     public string allItemsCollected()
@@ -96,6 +124,7 @@ public class CollectedScript : MonoBehaviour
         string[] array = collectedItems.ToArray();
         string json = JsonHelper.ToJson(array, true);
         PlayerPrefs.SetString("Inventory", json);
+        Debug.Log("Inventory saved: " + json);
     }
 
     void LoadInventory()

@@ -7,7 +7,7 @@ public class SceneChanger : MonoBehaviour
 
     void Update()
     {
-        // Verifica si se presionó la tecla Escape
+        // Verifica si se presionï¿½ la tecla Escape
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             // Carga la escena especificada
