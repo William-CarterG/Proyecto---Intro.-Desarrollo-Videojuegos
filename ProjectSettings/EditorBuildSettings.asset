@@ -26,4 +26,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PuzzleS/Grate.unity
     guid: 10b2c5c3d2c8246159bed5c6d5bec96a
+  - enabled: 1
+    path: Assets/Scenes/PuzzleS/PoemDoor.unity
+    guid: 349c26c0d73259f4ba5121054abf1634
+  - enabled: 1
+    path: Assets/Scenes/PuzzleS/CableLockedPuzzle.unity
+    guid: fe726086828b64dc49730c6dc42adbf7
+  - enabled: 1
+    path: Assets/Scenes/PuzzleS/CableUnockedPuzzle.unity
+    guid: 141c69e7f92d6470091a58fe7f3acbc9
   m_configObjects: {}

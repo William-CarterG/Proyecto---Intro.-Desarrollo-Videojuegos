@@ -43,6 +43,7 @@ public class CollectedScript : MonoBehaviour
                 {
                     collectedItems.Add(collectibleScript.Name);
                     collectibleScript.collected();
+                    SaveInventory();
                 }
             }
         }
@@ -158,6 +159,7 @@ public class CollectedScript : MonoBehaviour
         PlayerPrefs.DeleteKey("Inventory");
         collectedItems.Clear();
     }
+
 }
 public static class JsonHelper
 {
