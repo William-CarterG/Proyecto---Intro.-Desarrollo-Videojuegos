@@ -16,6 +16,7 @@ public class changedScene : MonoBehaviour
     void Start()
     {
         SavingScript = GameObject.FindWithTag("Player").GetComponent<SaveLoadPlayerState>();
+        /*
         if (SavingScript == null)
         {
             Debug.LogError("SaveLoadPlayerState script not found on Player");
@@ -25,6 +26,7 @@ public class changedScene : MonoBehaviour
         {
             Debug.LogError("SceneFader is not assigned");
         }
+        */
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -38,8 +40,10 @@ public class changedScene : MonoBehaviour
             {
                 Debug.Log("Saving player state");
                 SavingScript.SaveAll(PassCheckpoint);
-            }
 
+            }
+            SceneManager.LoadSceneAsync(sceneName);
+            /*
             if (sceneFader != null)
             {
                 Debug.Log("Initiating scene fade to: " + sceneName);
@@ -49,6 +53,7 @@ public class changedScene : MonoBehaviour
             {
                 Debug.LogError("SceneFader is not set");
             }
+            */
         }
     }
 }
