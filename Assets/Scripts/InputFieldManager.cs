@@ -6,8 +6,9 @@ public class InputFieldManager : MonoBehaviour
 {
     public InputField inputField;  // Referencia al Input Field
     public Text errorMessage;  // Referencia al Text para mensajes de error
-    public string correctCode = "123";  // El código correcto
+    public string correctCode = "632514";  // El código correcto
     public string previousSceneName;  // El nombre de la escena anterior
+    public string escapeSceneName = "SampleScene";  // El nombre de la escena a cargar al presionar Esc
 
     void Start()
     {
@@ -17,6 +18,21 @@ public class InputFieldManager : MonoBehaviour
 
         // Inicialmente ocultar el mensaje de error
         errorMessage.gameObject.SetActive(false);
+    }
+
+    void Update()
+    {
+        // Verificar si se ha presionado la tecla Esc
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            // Establecer las coordenadas para la posición (0, 0)
+            PlayerPrefs.SetFloat("PlayerPositionX", 0f);
+            PlayerPrefs.SetFloat("PlayerPositionY", 0f);
+            PlayerPrefs.Save();
+
+            // Cargar la escena especificada para la tecla Esc
+            SceneManager.LoadScene(escapeSceneName);
+        }
     }
 
     void CheckInput(string userInput)

@@ -3,15 +3,20 @@ using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour
 {
-    public string sceneToLoad;  // El nombre de la escena a la que quieres cambiar
+    public string escapeSceneName = "SampleScene";
 
     void Update()
     {
         // Verifica si se presion� la tecla Escape
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            // Carga la escena especificada
-            SceneManager.LoadScene(sceneToLoad);
+            // Establecer las coordenadas para la posición (-14, -3.8)
+            PlayerPrefs.SetFloat("PlayerPositionX", -14f);
+            PlayerPrefs.SetFloat("PlayerPositionY", -3.8f);
+            PlayerPrefs.Save();
+
+            // Cargar la escena especificada para la tecla P
+            SceneManager.LoadScene(escapeSceneName);
         }
     }
 }
