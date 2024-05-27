@@ -26,7 +26,7 @@ public class EnterPoem : MonoBehaviour
 
             if (ZoneScript.playerInside)
             {
-                SavingScript.SaveAll();
+                SavingScript.SaveAll(false);
                 SceneManager.LoadScene(sceneToLoad);
                 PlayerPrefs.SetInt("SaveScene", SceneManager.GetActiveScene().buildIndex);
             }

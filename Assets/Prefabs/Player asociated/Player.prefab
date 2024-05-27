@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 2233818310085247320}
   - component: {fileID: 8060022462628698500}
   - component: {fileID: 4053289266911555243}
+  - component: {fileID: 577489938740787467}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -218,7 +219,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  runningSpeed: 15
+  maxSpeed: 15
+  stunDuration: 0.5
+  acceleration: 0.75
+  zoomAmount: 4
 --- !u!70 &6744352224243214773
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -309,6 +313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collectedItems: []
+  checkpointItems: []
 --- !u!114 &4053289266911555243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319,5 +324,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 090355d21d7d4714d833e1159142e407, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &577489938740787467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8593065587739374870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c30aaefcaa0431144ab1d849ce89691d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -11,8 +11,8 @@ public class SaveLoadPlayerState : MonoBehaviour
         Inventory = GetComponent<CollectedScript>();
     }
 
-    public void SaveAll()
+    public void SaveAll(bool passCheckpoint)
     {
-        Inventory.SaveInventory();
+        Inventory.SaveInventory(passCheckpoint);
     }
 }

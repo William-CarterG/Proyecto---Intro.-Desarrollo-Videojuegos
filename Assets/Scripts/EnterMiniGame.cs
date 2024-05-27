@@ -26,7 +26,7 @@ public class EnterMiniGame : MonoBehaviour
 
             if (ZoneScript.playerInside && Inventory.CanAccessPuzzle())
             {
-                SavingScript.SaveAll();
+                SavingScript.SaveAll(false);
                 SceneManager.LoadScene(sceneToLoad);
                 PlayerPrefs.SetInt("SaveScene", SceneManager.GetActiveScene().buildIndex);
             }

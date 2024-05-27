@@ -8403,7 +8403,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: pisoRombos
+
   sceneFader: {fileID: 0}
+
+  PassCheckpoint: 0
 --- !u!61 &555061615
 BoxCollider2D:
   m_ObjectHideFlags: 0

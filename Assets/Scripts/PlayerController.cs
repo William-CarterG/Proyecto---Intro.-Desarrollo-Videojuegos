@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void MovePlayer(float horizontal, float vertical)
+    public void MovePlayer(float horizontal, float vertical)
     {
         Vector2 movement = new Vector2(horizontal, vertical).normalized;
 
@@ -53,8 +53,7 @@ public class PlayerController : MonoBehaviour
 
             // Incrementa la velocidad actual
             currentSpeed += acceleration * (Time.deltaTime/3);
-            currentSpeed = Mathf.Min(currentSpeed, maxSpeed); // Limita la velocidad actual
-            Debug.Log(currentSpeed);
+            currentSpeed = Mathf.Min(currentSpeed, maxSpeed);
 
             rb.velocity = movement * currentSpeed;
         }
@@ -88,18 +87,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    
-    /*void UpdateRunningState()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            isRunning = true;
-        }
-        else if (Input.GetKeyUp(KeyCode.Space))
-        {
-            isRunning = false;
-        }
-    }*/
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if((currentSpeed >= (maxSpeed - 0.5f)) & collision.gameObject.tag == "Walls")
@@ -166,5 +153,15 @@ public class PlayerController : MonoBehaviour
             Camera.main.transform.localPosition = originalPosition;
             Camera.main.orthographicSize = originalSize;
         }
+    }
+
+    public void setStunned(bool newValue)
+    {
+        isStunned = newValue;
+    }
+
+    public void multiplySpeed(float rate)
+    {
+        speed = speed * rate;
     }
 }

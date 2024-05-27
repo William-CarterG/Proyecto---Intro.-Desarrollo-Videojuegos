@@ -22,17 +22,10 @@ public class CollectibleScript : MonoBehaviour
 
         if (collectedScript != null)
         {
-            collectedScript.IsItemCollected(Name, (isCollected) =>
+            if (collectedScript.IsItemCollected(Name))
             {
-                if (isCollected)
-                {
-                    Destroy(gameObject);
-                }
-                else
-                {
-                    Debug.Log("Item " + Name + " is not collected.");
-                }
-            });
+                Destroy(gameObject);
+            };
         }
         else
         {
