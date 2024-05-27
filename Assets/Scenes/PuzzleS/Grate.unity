@@ -649,10 +649,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1845938065}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f002dd491b95754fb15a3873915357c, type: 3}
+  m_Script: {fileID: 11500000, guid: df257377edc7d484594a40adc1c2b00f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: SampleScene
+  escapeSceneName: SampleScene
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
