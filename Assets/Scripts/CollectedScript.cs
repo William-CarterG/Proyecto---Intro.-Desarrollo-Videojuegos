@@ -3,16 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static Unity.VisualScripting.Member;
 
 public class CollectedScript : MonoBehaviour
 {
     public List<string> collectedItems = new List<string>();
-    private Action<bool> inventoryLoadedCallback;
+    public List<string> checkpointItems = new List<string>();
+    public List<string> powerUps = new List<string>();
+    private PowerUpsScript PUScript;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
 
+        PUScript = GetComponent<PowerUpsScript>();
         LoadInventory();
+        setPowerUps();
     }
 
 
@@ -22,24 +27,26 @@ public class CollectedScript : MonoBehaviour
         {
             CollectibleScript collectibleScript = collision.GetComponent<CollectibleScript>();
             collectedItems.Add(collectibleScript.Name);
+            if (CheckIfPowerUp(collectibleScript.Name))
+            {
+                powerUps.Add(collectibleScript.Name);
+                setPowerUps();
+            }
+            if (CheckIfSneakers(collectibleScript.Name))
+            {
+                PUScript.UseSneaker();
+            }
             collectibleScript.collected();
         }
     }
 
     public bool CanAccessPuzzle()
-    {/*
-        List<string> puzzlePieces = new List<string> { "PuzzlePiece1", "PuzzlePiece2", "PuzzlePiece3",
-                                                        "PuzzlePiece4", "PuzzlePiece5", "PuzzlePiece6",
-                                                        "PuzzlePiece7", "PuzzlePiece8", "PuzzlePiece9" };
-        */
-        // Lista para almacenar los nombres de los hijos
+    {
         List<string> puzzlePieces = new List<string>();
         GameObject puzzle = GameObject.Find("collectibles");
-        // Verificar si el objeto padre existe
+
         if (puzzle != null)
         {
-
-
             // Obtener todos los hijos del objeto padre
             foreach (Transform hijo in puzzle.transform)
             {
@@ -67,16 +74,9 @@ public class CollectedScript : MonoBehaviour
         return true;
     }
 
-    public void IsItemCollected(string itemName, Action<bool> callback)
+    public bool IsItemCollected(string itemName)
     {
-        if (collectedItems.Count == 0)
-        {
-            inventoryLoadedCallback = callback;
-        }
-        else
-        {
-            callback(collectedItems.Contains(itemName));
-        }
+        return collectedItems.Contains(itemName) || checkpointItems.Contains(itemName);
     }
 
     public string allItemsCollected()
@@ -90,64 +90,104 @@ public class CollectedScript : MonoBehaviour
         return result;
     }
 
-    public void SaveInventory()
+    public void SaveInventory(bool PassCheckpoint)
     {
-
-        string[] array = collectedItems.ToArray();
-        string json = JsonHelper.ToJson(array, true);
-        PlayerPrefs.SetString("Inventory", json);
+        if (PassCheckpoint)
+        {
+            foreach (string item in collectedItems)
+            {
+                checkpointItems.Add(item);
+            }
+            string[] array = checkpointItems.ToArray();
+            string json = JsonHelper.ToJson(array, true);
+            PlayerPrefs.SetString("CheckpointItems", json);
+        }
+        else
+        {
+            string[] array = collectedItems.ToArray();
+            string json = JsonHelper.ToJson(array, true);
+            PlayerPrefs.SetString("LevelInventory", json);
+        }
     }
 
     void LoadInventory()
     {
-        string json = PlayerPrefs.GetString("Inventory", "");
+        string json = PlayerPrefs.GetString("CheckpointItems", "");
         if (!string.IsNullOrEmpty(json))
         {
             string[] array = JsonHelper.FromJson<string>(json);
             if (array != null)
             {
                 collectedItems = new List<string>(array);
-                Debug.Log("Inventory loaded: " + json);
-                if (inventoryLoadedCallback != null)
-                {
-                    inventoryLoadedCallback.Invoke(true);
-                    inventoryLoadedCallback = null;
-                }
-                return;
+                Debug.Log("Checkpoint Inventory loaded: " + json);
+            }
+        }
+
+        json = PlayerPrefs.GetString("LevelInventory", "");
+        if (!string.IsNullOrEmpty(json))
+        {
+            string[] array = JsonHelper.FromJson<string>(json);
+            if (array != null)
+            {
+                collectedItems = new List<string>(array);
+                Debug.Log("Level Inventory loaded: " + json);
+            }
+        }
+
+        foreach(string item in collectedItems)
+        {
+            if (CheckIfPowerUp(item))
+            {
+                powerUps.Add(item);
+            }
+        }
+
+        foreach (string item in checkpointItems)
+        {
+            if (CheckIfPowerUp(item))
+            {
+                powerUps.Add(item);
             }
         }
 
         Debug.Log("Inventory is empty.");
-        if (inventoryLoadedCallback != null)
+    }
+
+    public bool CheckIfPowerUp(string input)
+    {
+        if (input.Length >= 2)
         {
-            inventoryLoadedCallback.Invoke(false);
-            inventoryLoadedCallback = null;
+            return input.StartsWith("PU", System.StringComparison.Ordinal);
+        }
+        return false;
+    }
+
+    public bool CheckIfSneakers(string input)
+    {
+        if (input.Length >= 18)
+        {
+            return input.StartsWith("ConsumableSneakers", System.StringComparison.Ordinal);
+        }
+        return false;
+    }
+    public void setPowerUps()
+    {
+        if (powerUps.Count > 0)
+        {
+            PUScript.SetPowerUps(powerUps);
         }
     }
-    public void DeleteInventory()
+
+    public void DeleteInventory(bool deleteAll)
     {
-        PlayerPrefs.DeleteKey("Inventory");
+        if (deleteAll)
+        {
+            PlayerPrefs.DeleteKey("CheckpointItems");
+            collectedItems.Clear();
+            PlayerPrefs.DeleteKey("LevelInventory");
+            collectedItems.Clear();
+        }
+        PlayerPrefs.DeleteKey("LevelInventory");
         collectedItems.Clear();
-    }
-}
-public static class JsonHelper
-{
-    public static T[] FromJson<T>(string json)
-    {
-        Wrapper<T> wrapper = JsonUtility.FromJson<Wrapper<T>>(json);
-        return wrapper.Items;
-    }
-
-    public static string ToJson<T>(T[] array, bool prettyPrint = false)
-    {
-        Wrapper<T> wrapper = new Wrapper<T>();
-        wrapper.Items = array;
-        return JsonUtility.ToJson(wrapper, prettyPrint);
-    }
-
-    [System.Serializable]
-    private class Wrapper<T>
-    {
-        public T[] Items;
     }
 }

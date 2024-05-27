@@ -8,22 +8,28 @@ public class EnemyFinder : MonoBehaviour
     public string tagPlayer = "Player"; // Etiqueta del jugador a seguir
 
     private Transform player; // Referencia al transform del jugador
+    private PowerUpsScript PUScript;
 
     void Start()
     {
         // Buscar el jugador al inicio del juego
         player = GameObject.FindGameObjectWithTag(tagPlayer).transform;
+        PUScript = player.GetComponent<PowerUpsScript>();
     }
 
     void Update()
     {
         if (player != null)
         {
-            // Calcular la dirección hacia el jugador
-            Vector2 direccion = (player.position - transform.position).normalized;
+            if (PUScript.checkWatch())
+            {
+                // Calcular la dirección hacia el jugador
+                Vector2 direccion = (player.position - transform.position).normalized;
 
-            // Mover al enemigo en la dirección del jugador con una velocidad variable
-            transform.position += (Vector3)direccion * velocidad * Time.deltaTime;
+                // Mover al enemigo en la dirección del jugador con una velocidad variable
+                transform.position += (Vector3)direccion * velocidad * Time.deltaTime;
+
+            }
         }
     }
 

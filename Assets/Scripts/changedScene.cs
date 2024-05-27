@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class changedScene : MonoBehaviour
 {
     public string sceneName;
+    public bool PassCheckpoint;
     private SaveLoadPlayerState SavingScript;
 
     void Start()
@@ -19,7 +20,7 @@ public class changedScene : MonoBehaviour
         {
             // Cambiar a la siguiente escena
             Debug.Log("CAMBIO DE ESCENA");
-            SavingScript.SaveAll();
+            SavingScript.SaveAll(PassCheckpoint);
             SceneManager.LoadScene(sceneName);
         }
     }
