@@ -62,7 +62,7 @@ public class CollectedScript : MonoBehaviour
                 {
                     collectedItems.Add(collectibleScript.Name);
                     collectibleScript.collected();
-                    SaveInventory();
+                    SaveInventory(false);
                 }
             }
         }

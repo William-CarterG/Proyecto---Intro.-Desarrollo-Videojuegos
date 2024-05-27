@@ -7,7 +7,7 @@ public class InventoryResetter : MonoBehaviour
         CollectedScript collectedScript = GameObject.FindWithTag("Player").GetComponent<CollectedScript>();
         if (collectedScript != null)
         {
-            collectedScript.DeleteInventory();
+            collectedScript.DeleteInventory(true);
         }
 
         Destroy(gameObject);

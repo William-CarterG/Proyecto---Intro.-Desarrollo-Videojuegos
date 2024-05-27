@@ -28,7 +28,7 @@ public class EnterCablePanel: MonoBehaviour
         {
             if (ZoneScript.playerInside)
             {
-                SavingScript.SaveAll();
+                SavingScript.SaveAll(false);
                 if (Inventory.IsKeyCollected("Key")) 
                 {
                     SceneManager.LoadScene(sceneToLoadUnlocked);
