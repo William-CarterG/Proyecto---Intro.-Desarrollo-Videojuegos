@@ -6,7 +6,11 @@ using UnityEngine.SceneManagement;
 public class changedScene : MonoBehaviour
 {
     public string sceneName;
+
     public SceneFader sceneFader;
+
+    public bool PassCheckpoint;
+
     private SaveLoadPlayerState SavingScript;
 
     void Start()
@@ -33,7 +37,7 @@ public class changedScene : MonoBehaviour
             if (SavingScript != null)
             {
                 Debug.Log("Saving player state");
-                SavingScript.SaveAll();
+                SavingScript.SaveAll(PassCheckpoint);
             }
 
             if (sceneFader != null)

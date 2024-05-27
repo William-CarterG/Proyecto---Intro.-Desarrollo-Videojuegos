@@ -7,7 +7,8 @@ public class GameOverHappenings : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlayerPrefs.DeleteKey("Inventory");
+        PlayerPrefs.DeleteKey("CheckpointItems");
+        PlayerPrefs.DeleteKey("LevelInventory");
     }
 
     // Update is called once per frame
