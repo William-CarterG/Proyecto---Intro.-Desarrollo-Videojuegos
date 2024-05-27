@@ -6,22 +6,49 @@ using UnityEngine.SceneManagement;
 public class changedScene : MonoBehaviour
 {
     public string sceneName;
+
+    public SceneFader sceneFader;
+
     public bool PassCheckpoint;
+
     private SaveLoadPlayerState SavingScript;
 
     void Start()
     {
         SavingScript = GameObject.FindWithTag("Player").GetComponent<SaveLoadPlayerState>();
+        if (SavingScript == null)
+        {
+            Debug.LogError("SaveLoadPlayerState script not found on Player");
+        }
+
+        if (sceneFader == null)
+        {
+            Debug.LogError("SceneFader is not assigned");
+        }
     }
+
     void OnTriggerEnter2D(Collider2D other)
     {
-        // Verificar si el objeto que entró en el trigger tiene el tag "Player"
+        // Verify if the object that entered the trigger has the tag "Player"
         if (other.CompareTag("Player"))
         {
-            // Cambiar a la siguiente escena
-            Debug.Log("CAMBIO DE ESCENA");
-            SavingScript.SaveAll(PassCheckpoint);
-            SceneManager.LoadScene(sceneName);
+            Debug.Log("Player entered the trigger");
+
+            if (SavingScript != null)
+            {
+                Debug.Log("Saving player state");
+                SavingScript.SaveAll(PassCheckpoint);
+            }
+
+            if (sceneFader != null)
+            {
+                Debug.Log("Initiating scene fade to: " + sceneName);
+                sceneFader.FadeToScene(sceneName);
+            }
+            else
+            {
+                Debug.LogError("SceneFader is not set");
+            }
         }
     }
 }

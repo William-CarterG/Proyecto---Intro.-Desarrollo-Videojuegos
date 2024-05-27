@@ -15,9 +15,15 @@ public class CollectedScript : MonoBehaviour
     void Awake()
     {
 
+
         PUScript = GetComponent<PowerUpsScript>();
         LoadInventory();
         setPowerUps();
+    }
+
+    void Update()
+    {
+        CheckForKeyClick();
     }
 
 
@@ -26,6 +32,7 @@ public class CollectedScript : MonoBehaviour
         if (collision.CompareTag("Collectible"))
         {
             CollectibleScript collectibleScript = collision.GetComponent<CollectibleScript>();
+
             collectedItems.Add(collectibleScript.Name);
             if (CheckIfPowerUp(collectibleScript.Name))
             {
@@ -36,10 +43,31 @@ public class CollectedScript : MonoBehaviour
             {
                 PUScript.UseSneaker();
             }
+
             collectibleScript.collected();
         }
     }
 
+    private void CheckForKeyClick()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
+
+            if (hit.collider != null && hit.collider.CompareTag("CollectibleKey"))
+            {
+                CollectibleScript collectibleScript = hit.collider.GetComponent<CollectibleScript>();
+                if (collectibleScript != null)
+                {
+                    collectedItems.Add(collectibleScript.Name);
+                    collectibleScript.collected();
+                    SaveInventory(false);
+                }
+            }
+        }
+    }
+    
     public bool CanAccessPuzzle()
     {
         List<string> puzzlePieces = new List<string>();
@@ -74,9 +102,15 @@ public class CollectedScript : MonoBehaviour
         return true;
     }
 
+
     public bool IsItemCollected(string itemName)
     {
         return collectedItems.Contains(itemName) || checkpointItems.Contains(itemName);
+    }
+
+    public bool IsKeyCollected(string keyName)
+    {
+        return collectedItems.Contains(keyName);
     }
 
     public string allItemsCollected()
@@ -92,6 +126,7 @@ public class CollectedScript : MonoBehaviour
 
     public void SaveInventory(bool PassCheckpoint)
     {
+
         if (PassCheckpoint)
         {
             foreach (string item in collectedItems)
@@ -161,6 +196,7 @@ public class CollectedScript : MonoBehaviour
         }
         return false;
     }
+
 
     public bool CheckIfSneakers(string input)
     {
