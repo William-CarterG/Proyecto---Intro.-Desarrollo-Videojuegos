@@ -9,6 +9,7 @@ public class EnterCablePanel: MonoBehaviour
 {
     public string sceneToLoadLocked;
     public string sceneToLoadUnlocked;
+    public string sceneToLoadCompleted;
     public int completed;
     private ShowText ZoneScript;
     private CollectedScript Inventory;
@@ -36,6 +37,14 @@ public class EnterCablePanel: MonoBehaviour
                 else 
                 {
                     SceneManager.LoadScene(sceneToLoadLocked);
+                }
+                string completedPuzzle = PlayerPrefs.GetString("CablePuzzleComplete", "");
+                if (!string.IsNullOrEmpty(completedPuzzle))
+                {
+                    if (completedPuzzle == "true")
+                    {
+                        SceneManager.LoadScene(sceneToLoadCompleted);
+                    }
                 }
                 PlayerPrefs.SetInt("SaveScene", SceneManager.GetActiveScene().buildIndex);
             }
