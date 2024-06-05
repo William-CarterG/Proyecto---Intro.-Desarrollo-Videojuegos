@@ -29,8 +29,11 @@ public class Boid : MonoBehaviour
 
     void Update()
     {
-        logicBoid();
-        FollowTarget(); // Lógica para seguir al objetivo
+        if (target != null)
+        {
+            logicBoid();
+            FollowTarget(); // Lógica para seguir al objetivo
+        }
     }
 
     void logicBoid()
