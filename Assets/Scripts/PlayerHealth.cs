@@ -13,7 +13,6 @@ public class PlayerHealth : MonoBehaviour
 
     void Start()
     {
-
         HealthMeter = GameObject.Find("HealthMeter");
         hearts = new GameObject[5];
 
@@ -71,7 +70,7 @@ public class PlayerHealth : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             Debug.Log("Collision with enemy!");
-            
+
             Debug.Log("Enemy  --> [ANTES]: " + PlayerPrefs.GetInt("MiniGameCompleted1"));
 
             int damageAmount = 1;
@@ -79,6 +78,15 @@ public class PlayerHealth : MonoBehaviour
             Debug.Log("Enemy  --> [DESPUES]: " + PlayerPrefs.GetInt("MiniGameCompleted1"));
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            TakeDamage(1);
+        }
+    }
+
     void OnApplicationQuit()
     {
         PlayerPrefs.DeleteKey("PlayerHealth");
