@@ -167,6 +167,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1483448973000225579, guid: 3c266d8ac37a19f468dfaae253fedff6, type: 3}
+      propertyPath: fireRate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1483448973000225579, guid: 3c266d8ac37a19f468dfaae253fedff6, type: 3}
       propertyPath: vertical
       value: 1
       objectReference: {fileID: 0}
@@ -186,13 +190,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Caleuche (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3498523850311094856, guid: 3c266d8ac37a19f468dfaae253fedff6, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 5494277209909022264, guid: 3c266d8ac37a19f468dfaae253fedff6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.34
       objectReference: {fileID: 0}
     - target: {fileID: 5494277209909022264, guid: 3c266d8ac37a19f468dfaae253fedff6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -13.57
+      value: -13.36
       objectReference: {fileID: 0}
     - target: {fileID: 5494277209909022264, guid: 3c266d8ac37a19f468dfaae253fedff6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -254,6 +262,10 @@ PrefabInstance:
     - target: {fileID: 3498523850311094856, guid: 3c266d8ac37a19f468dfaae253fedff6, type: 3}
       propertyPath: m_Name
       value: Caleuche (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498523850311094856, guid: 3c266d8ac37a19f468dfaae253fedff6, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 5494277209909022264, guid: 3c266d8ac37a19f468dfaae253fedff6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -408,6 +420,10 @@ PrefabInstance:
     - target: {fileID: 3498523850311094856, guid: 3c266d8ac37a19f468dfaae253fedff6, type: 3}
       propertyPath: m_Name
       value: Caleuche
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498523850311094856, guid: 3c266d8ac37a19f468dfaae253fedff6, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 5494277209909022264, guid: 3c266d8ac37a19f468dfaae253fedff6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -914,7 +930,7 @@ PrefabInstance:
       objectReference: {fileID: 8368120185969280845, guid: 31b4367b22c6c344eb2641a1a0475b47, type: 3}
     - target: {fileID: 1483448973000225579, guid: 3c266d8ac37a19f468dfaae253fedff6, type: 3}
       propertyPath: horizontal
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1483448973000225579, guid: 3c266d8ac37a19f468dfaae253fedff6, type: 3}
       propertyPath: projectilePrefab
@@ -923,6 +939,10 @@ PrefabInstance:
     - target: {fileID: 3498523850311094856, guid: 3c266d8ac37a19f468dfaae253fedff6, type: 3}
       propertyPath: m_Name
       value: Caleuche (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498523850311094856, guid: 3c266d8ac37a19f468dfaae253fedff6, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 5494277209909022264, guid: 3c266d8ac37a19f468dfaae253fedff6, type: 3}
       propertyPath: m_LocalPosition.x
