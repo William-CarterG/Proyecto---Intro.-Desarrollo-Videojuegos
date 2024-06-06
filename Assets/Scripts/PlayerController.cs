@@ -19,6 +19,10 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private Rigidbody2D rb;
 
+    public AudioClip runningSound; // Clip de sonido para la carrera
+    public AudioClip crashSound; // Clip de sonido para el choque
+    private bool isPlayingRunningSound = false;
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -34,7 +38,6 @@ public class PlayerController : MonoBehaviour
 
             MovePlayer(moveHorizontal, moveVertical);
             UpdateAnimator(moveHorizontal, moveVertical);
-            //UpdateRunningState();
         }
     }
 
@@ -52,10 +55,18 @@ public class PlayerController : MonoBehaviour
             }
 
             // Incrementa la velocidad actual
-            currentSpeed += acceleration * (Time.deltaTime/3);
+            currentSpeed += acceleration * (Time.deltaTime / 3);
             currentSpeed = Mathf.Min(currentSpeed, maxSpeed);
 
             rb.velocity = movement * currentSpeed;
+
+            // Reproducir el sonido de carrera si no se está reproduciendo
+            if (!isPlayingRunningSound)
+            {
+                isPlayingRunningSound = true;
+                AudioSource.PlayClipAtPoint(runningSound, transform.position);
+                StartCoroutine(ResetRunningSound());
+            }
         }
         else
         {
@@ -63,6 +74,12 @@ public class PlayerController : MonoBehaviour
             currentSpeed = speed; // Reinicia la velocidad actual
             lastDirection = Vector2.zero; // Reinicia la última dirección
         }
+    }
+
+    IEnumerator ResetRunningSound()
+    {
+        yield return new WaitForSeconds(runningSound.length);
+        isPlayingRunningSound = false;
     }
 
     void UpdateAnimator(float horizontal, float vertical)
@@ -89,9 +106,9 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if((currentSpeed >= (maxSpeed - 0.5f)) & collision.gameObject.tag == "Walls")
+        if ((currentSpeed >= (maxSpeed - 0.5f)) && collision.gameObject.CompareTag("Walls"))
         {
-            EditorApplication.Beep();
+            AudioSource.PlayClipAtPoint(crashSound, transform.position); // Reproducir sonido de choque
             Debug.Log("ATURDIDO");
             StartCoroutine(StunPlayer());
         }
@@ -99,8 +116,8 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("CHOCA");
         }
-        
     }
+
     IEnumerator StunPlayer()
     {
         // Guardar la posición inicial del jugador
@@ -120,7 +137,6 @@ public class PlayerController : MonoBehaviour
 
         // Restablecer el estado del jugador después del aturdimiento
         isStunned = false;
-        //isRunning = false;
 
         // Restaurar la posición inicial del jugador
         transform.position = initialPosition;
@@ -128,31 +144,29 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator CameraShake()
     {
+        Vector3 originalPosition = Camera.main.transform.localPosition;
+        float originalSize = Camera.main.orthographicSize;
+
+        float elapsedTime = 0f;
+
+        while (elapsedTime < stunDuration)
         {
-            Vector3 originalPosition = Camera.main.transform.localPosition;
-            float originalSize = Camera.main.orthographicSize;
+            float x = UnityEngine.Random.Range(-1f, 1f) * cameraShakeIntensity;
+            float y = UnityEngine.Random.Range(-1f, 1f) * cameraShakeIntensity;
 
-            float elapsedTime = 0f;
+            Camera.main.transform.localPosition = originalPosition + new Vector3(x, y, 0);
 
-            while (elapsedTime < stunDuration)
-            {
-                float x = UnityEngine.Random.Range(-1f, 1f) * cameraShakeIntensity;
-                float y = UnityEngine.Random.Range(-1f, 1f) * cameraShakeIntensity;
+            // Aplicar el zoom suave
+            Camera.main.orthographicSize = Mathf.Lerp(originalSize, originalSize - zoomAmount, elapsedTime / stunDuration);
 
-                Camera.main.transform.localPosition = originalPosition + new Vector3(x, y, 0);
+            elapsedTime += Time.deltaTime;
 
-                // Aplicar el zoom suave
-                Camera.main.orthographicSize = Mathf.Lerp(originalSize, originalSize - zoomAmount, elapsedTime / stunDuration);
-
-                elapsedTime += Time.deltaTime;
-
-                yield return null;
-            }
-
-            // Restablecer la posición y el tamaño de la cámara al final de la vibración
-            Camera.main.transform.localPosition = originalPosition;
-            Camera.main.orthographicSize = originalSize;
+            yield return null;
         }
+
+        // Restablecer la posición y el tamaño de la cámara al final de la vibración
+        Camera.main.transform.localPosition = originalPosition;
+        Camera.main.orthographicSize = originalSize;
     }
 
     public void setStunned(bool newValue)

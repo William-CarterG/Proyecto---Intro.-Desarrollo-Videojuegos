@@ -10,6 +10,9 @@ public class PlayerHealth : MonoBehaviour
     public int currentHealth; // Vidas actuales
     private GameObject[] hearts;
     public GameObject HealthMeter;
+    public AudioClip hitSound; // Clip de sonido para el golpe
+
+    private AudioSource audioSource; // Componente de AudioSource
 
     void Start()
     {
@@ -33,6 +36,9 @@ public class PlayerHealth : MonoBehaviour
             currentHealth = PlayerPrefs.GetInt("PlayerHealthActual");
         }
 
+        // Obtener el componente AudioSource
+        audioSource = GetComponent<AudioSource>();
+
         // Actualizar el UI de la salud
         UpdateHealthUI();
     }
@@ -44,6 +50,9 @@ public class PlayerHealth : MonoBehaviour
         UpdateHealthUI();
         PlayerPrefs.SetInt("PlayerHealthActual", currentHealth);
         PlayerPrefs.SetInt("MiniGameCompleted1", 0);
+
+        // Reproducir el sonido de golpe
+        PlayHitSound();
 
         // Comprobar si el jugador ha perdido todas las vidas
         if (currentHealth <= 0)
@@ -90,5 +99,13 @@ public class PlayerHealth : MonoBehaviour
     void OnApplicationQuit()
     {
         PlayerPrefs.DeleteKey("PlayerHealth");
+    }
+
+    void PlayHitSound()
+    {
+        if (audioSource != null && hitSound != null)
+        {
+            audioSource.PlayOneShot(hitSound);
+        }
     }
 }

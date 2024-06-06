@@ -4,18 +4,24 @@ using UnityEngine;
 
 public class Caleuche : MonoBehaviour
 {
-    public GameObject projectilePrefab;
+    public GameObject projectilePrefabVertical;
+    public GameObject projectilePrefabHorizontal;
     public float fireRate = 2f;
     public float projectileSpeed = 5f;
     public bool vertical;
     public bool horizontal;
+    public AudioClip fireSound; // Clip de sonido para el disparo
 
+    private AudioSource audioSource; // Componente de AudioSource
     private float nextFireTime;
 
     void Start()
     {
         // Inicializar el temporizador de disparo
         nextFireTime = Time.time;
+
+        // Obtener el componente AudioSource
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -26,13 +32,15 @@ public class Caleuche : MonoBehaviour
             // Disparar un proyectil
             if (horizontal)
             {
-                FireProjectileVertical();
+                FireProjectileHorizontal();
             }
             if (vertical)
             {
-                
-                FireProjectileHorizontal();
+                FireProjectileVertical();
             }
+
+            // Reproducir el sonido de disparo
+            PlayFireSound();
 
             // Establecer el próximo tiempo de disparo
             nextFireTime = Time.time + 1f / fireRate;
@@ -42,9 +50,9 @@ public class Caleuche : MonoBehaviour
     void FireProjectileHorizontal()
     {
         // Instanciar tres proyectiles
-        GameObject projectile1 = Instantiate(projectilePrefab, transform.position + Vector3.left * 2.5f, Quaternion.identity);
-        GameObject projectile2 = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-        GameObject projectile3 = Instantiate(projectilePrefab, transform.position + Vector3.right * 2.5f, Quaternion.identity);
+        GameObject projectile1 = Instantiate(projectilePrefabHorizontal, transform.position + Vector3.left * 2.5f, Quaternion.identity);
+        GameObject projectile2 = Instantiate(projectilePrefabHorizontal, transform.position, Quaternion.identity);
+        GameObject projectile3 = Instantiate(projectilePrefabHorizontal, transform.position + Vector3.right * 2.5f, Quaternion.identity);
 
         // Obtener los componentes Rigidbody2D de los proyectiles
         Rigidbody2D rb1 = projectile1.GetComponent<Rigidbody2D>();
@@ -60,9 +68,9 @@ public class Caleuche : MonoBehaviour
     void FireProjectileVertical()
     {
         // Instanciar tres proyectiles
-        GameObject projectile1 = Instantiate(projectilePrefab, transform.position + Vector3.up * 2.5f, Quaternion.identity);
-        GameObject projectile2 = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-        GameObject projectile3 = Instantiate(projectilePrefab, transform.position + Vector3.down * 2.5f, Quaternion.identity);
+        GameObject projectile1 = Instantiate(projectilePrefabVertical, transform.position + Vector3.up * 2.5f, Quaternion.identity);
+        GameObject projectile2 = Instantiate(projectilePrefabVertical, transform.position, Quaternion.identity);
+        GameObject projectile3 = Instantiate(projectilePrefabVertical, transform.position + Vector3.down * 2.5f, Quaternion.identity);
 
         // Obtener los componentes Rigidbody2D de los proyectiles
         Rigidbody2D rb1 = projectile1.GetComponent<Rigidbody2D>();
@@ -73,5 +81,13 @@ public class Caleuche : MonoBehaviour
         rb1.AddForce(Vector2.up * projectileSpeed, ForceMode2D.Impulse);
         rb2.AddForce(Vector2.up * projectileSpeed, ForceMode2D.Impulse);
         rb3.AddForce(Vector2.up * projectileSpeed, ForceMode2D.Impulse);
+    }
+
+    void PlayFireSound()
+    {
+        if (audioSource != null && fireSound != null)
+        {
+            audioSource.PlayOneShot(fireSound);
+        }
     }
 }
