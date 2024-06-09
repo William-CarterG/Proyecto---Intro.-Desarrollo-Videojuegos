@@ -11,6 +11,7 @@ TagManager:
   - Collectible
   - Walls
   - CollectibleKey
+  - Helper
   layers:
   - Default
   - TransparentFX
