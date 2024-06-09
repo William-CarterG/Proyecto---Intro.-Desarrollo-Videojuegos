@@ -6,6 +6,7 @@ public class DeathManager : MonoBehaviour
 {
     private SubtitleManager ZoneScript;
     private CollectedScript Inventory;
+    public GameObject PuzzlePiece;
 
     void Start()
     {
@@ -22,13 +23,20 @@ public class DeathManager : MonoBehaviour
             {
                 if (Inventory.HasAllCoins())
                 {
-                    Debug.Log("Te doy la pieza de puzzle");
+                    Debug.Log("Dando piezza al usuario");
+                    Inventory.AddItem("Photo piece (7)");
+                    ZoneScript.ShowTemporaryMessage("La muerte: Te doy una pieza de puzzle, gracias mortal.", 3f);
+                    Destroy(PuzzlePiece);
                 }
                 else
                 {
                     ZoneScript.ShowTemporaryMessage("La muerte: No tienes 3 monedas", 3f);
                 }
             }
+        }
+        if (Inventory.IsItemCollected("Photo piece (7)"))
+        {
+            Destroy(PuzzlePiece);
         }
     }
 }

@@ -60,6 +60,11 @@ public class SubtitleManager : MonoBehaviour
         }
     }
 
+    public void ChangeText(string newMessage)
+    {
+        floatingText.text = newMessage;
+    }
+
     IEnumerator DespawnText()
     {
         yield return new WaitForSeconds(despawnDelay);
