@@ -12,16 +12,12 @@ public class Caleuche : MonoBehaviour
     public bool horizontal;
     public AudioClip fireSound; // Clip de sonido para el disparo
 
-    private AudioSource audioSource; // Componente de AudioSource
     private float nextFireTime;
 
     void Start()
     {
         // Inicializar el temporizador de disparo
         nextFireTime = Time.time;
-
-        // Obtener el componente AudioSource
-        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -85,9 +81,9 @@ public class Caleuche : MonoBehaviour
 
     void PlayFireSound()
     {
-        if (audioSource != null && fireSound != null)
+        if (fireSound != null)
         {
-            audioSource.PlayOneShot(fireSound);
+            AudioSource.PlayClipAtPoint(fireSound, transform.position);
         }
     }
 }

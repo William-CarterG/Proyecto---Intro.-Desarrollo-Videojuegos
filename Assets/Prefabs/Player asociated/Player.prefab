@@ -110,6 +110,7 @@ GameObject:
   - component: {fileID: 8060022462628698500}
   - component: {fileID: 4053289266911555243}
   - component: {fileID: 577489938740787467}
+  - component: {fileID: -3991161896825922128}
   - component: {fileID: 2699196670661455247}
   m_Layer: 0
   m_Name: Player
@@ -303,7 +304,7 @@ MonoBehaviour:
   startingHealth: 5
   currentHealth: 0
   HealthMeter: {fileID: 0}
-  hitSound: {fileID: 8300000, guid: 208c0a2bad744674fbe324d7a9a17e88, type: 3}
+  hitSound: {fileID: 8300000, guid: 7ae8272be472a104dae8335502695008, type: 3}
 --- !u!114 &8060022462628698500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,6 +345,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerUp: 
+--- !u!114 &-3991161896825922128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8593065587739374870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2119c0cdaecefb4089b9e239e61784f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!82 &2699196670661455247
 AudioSource:
   m_ObjectHideFlags: 0
