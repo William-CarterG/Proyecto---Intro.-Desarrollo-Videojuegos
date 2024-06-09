@@ -24,7 +24,7 @@ public class DeathManager : MonoBehaviour
             {
                 if (Inventory.HasAllCoins())
                 {
-                    Debug.Log("Dando piezza al usuario");
+                    Debug.Log("Dando pieza al usuario");
                     Inventory.AddItem("Photo piece (7)");
                     ZoneScript.ShowTemporaryMessage("La muerte: Te doy una pieza de puzzle, gracias mortal.", 3f);
                     Destroy(PuzzlePiece);
