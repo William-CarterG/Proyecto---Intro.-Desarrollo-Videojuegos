@@ -7,6 +7,7 @@ public class DeathManager : MonoBehaviour
     private SubtitleManager ZoneScript;
     private CollectedScript Inventory;
     public GameObject PuzzlePiece;
+    public GameObject DeathTextAfterPiece;
 
     void Start()
     {
@@ -37,6 +38,7 @@ public class DeathManager : MonoBehaviour
         if (Inventory.IsItemCollected("Photo piece (7)"))
         {
             Destroy(PuzzlePiece);
+            ZoneScript.floatingTextPrefab = DeathTextAfterPiece;
         }
     }
 }
