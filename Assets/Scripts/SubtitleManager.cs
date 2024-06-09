@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro; // Import the TextMeshPro namespace
 
 public class SubtitleManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class SubtitleManager : MonoBehaviour
     public bool playerInside = false;
 
     private GameObject floatingTextInstance;
+    private TextMeshProUGUI floatingText;
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -27,6 +29,14 @@ public class SubtitleManager : MonoBehaviour
                 rectTransform.pivot = new Vector2(0.5f, 0);
                 rectTransform.anchoredPosition = new Vector2(0, 20); // Ajusta el valor en Y según sea necesario
 
+                floatingText = floatingTextInstance.GetComponent<TextMeshProUGUI>();
+
+                // Asegurarse de que se encontró el componente de texto
+                if (floatingText == null)
+                {
+                    Debug.LogError("No se encontró el componente TextMeshProUGUI en el prefab del texto flotante.");
+                }
+                
                 StartCoroutine(DespawnText());
             }
 
@@ -43,6 +53,7 @@ public class SubtitleManager : MonoBehaviour
             if (floatingTextInstance != null)
             {
                 Destroy(floatingTextInstance);
+                floatingText = null; // Resetear el floatingText a null cuando el objeto es destruido
             }
 
             playerInside = false;
@@ -56,6 +67,28 @@ public class SubtitleManager : MonoBehaviour
         if (floatingTextInstance != null)
         {
             Destroy(floatingTextInstance);
+            floatingText = null; // Resetear el floatingText a null cuando el objeto es destruido
         }
+    }
+
+    public void ShowTemporaryMessage(string message, float duration)
+    {
+        if (floatingTextInstance != null && floatingText != null)
+        {
+            StopCoroutine(DespawnText());
+            StartCoroutine(ShowTemporaryMessageCoroutine(message, duration));
+        }
+        else
+        {
+            Debug.LogWarning("No se puede mostrar el mensaje temporal porque el texto flotante no está instanciado o no se encontró el componente TextMeshProUGUI.");
+        }
+    }
+
+    private IEnumerator ShowTemporaryMessageCoroutine(string message, float duration)
+    {
+        string originalMessage = floatingText.text;
+        floatingText.text = message;
+        yield return new WaitForSeconds(duration);
+        floatingText.text = originalMessage;
     }
 }

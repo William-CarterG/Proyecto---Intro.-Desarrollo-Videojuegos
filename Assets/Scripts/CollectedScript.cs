@@ -67,6 +67,11 @@ public class CollectedScript : MonoBehaviour
             }
         }
     }
+
+    public bool HasAllCoins()
+    {
+        return collectedItems.Contains("Coin1") && collectedItems.Contains("Coin2") && collectedItems.Contains("Coin3");
+    }
     
     public bool CanAccessPuzzle()
     {
