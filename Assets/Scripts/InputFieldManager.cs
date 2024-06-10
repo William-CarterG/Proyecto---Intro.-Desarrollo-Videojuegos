@@ -7,8 +7,8 @@ public class InputFieldManager : MonoBehaviour
     public InputField inputField;  // Referencia al Input Field
     public Text errorMessage;  // Referencia al Text para mensajes de error
     public string correctCode = "632514";  // El código correcto
-    public string previousSceneName;  // El nombre de la escena anterior
-    public string escapeSceneName = "SampleScene";  // El nombre de la escena a cargar al presionar Esc
+    public string nextSceneName;  // El nombre de la escena anterior
+    public string escapeSceneName = "nivelHernando";  // El nombre de la escena a cargar al presionar Esc
 
     void Start()
     {
@@ -40,7 +40,7 @@ public class InputFieldManager : MonoBehaviour
         if (userInput == correctCode)
         {
             // Cargar la escena anterior
-            SceneManager.LoadScene(previousSceneName);
+            SceneManager.LoadScene(nextSceneName);
         }
         else
         {

@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour
 {
-    public string escapeSceneName = "SampleScene";
+    public string escapeSceneName = "nivelHernando";
 
     void Update()
     {

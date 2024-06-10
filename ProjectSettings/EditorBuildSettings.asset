@@ -39,7 +39,7 @@ EditorBuildSettings:
     path: Assets/Scenes/PuzzleS/CablePuzzleCompleted.unity
     guid: 427d7d0adc2da46798d298839807d5b7
   - enabled: 1
-    path: Assets/Scenes/test/nivelHernando1.unity
+    path: Assets/Scenes/test/niveTESTlHernando.unity
     guid: c76f3a83e94eb2242adcffc7137b6b4e
   - enabled: 1
     path: Assets/Scenes/test/TestPincoya.unity
@@ -48,7 +48,7 @@ EditorBuildSettings:
     path: Assets/Scenes/test/TestCaleuche.unity
     guid: 22caab63204489843942dbf1e7d65ef0
   - enabled: 1
-    path: Assets/Scenes/Nivel-Hernando_de_magallanes/nivelHernando1.unity
+    path: Assets/Scenes/Nivel-Hernando_de_magallanes/nivelHernando.unity
     guid: dda3ac65e757c75419f781795641d880
   - enabled: 1
     path: Assets/Scenes/Nivel-Hernando_de_magallanes/BajoHernandoDeMagallanes.unity
@@ -65,4 +65,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Nivel-Baquedano/EntradaBaquedano.unity
     guid: e7ae1c4899ae54e4dbdd796d504a5c08
+  - enabled: 1
+    path: Assets/Scenes/SwitchTask/Scene/SwitchScene.unity
+    guid: 6a4248a249f129841bab925d3da93172
   m_configObjects: {}

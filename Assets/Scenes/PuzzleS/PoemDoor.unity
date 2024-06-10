@@ -318,7 +318,8 @@ MonoBehaviour:
   inputField: {fileID: 1192617960}
   errorMessage: {fileID: 1293170461}
   correctCode: 632514
-  previousSceneName: piso1
+  nextSceneName: BajoHernandoDeMagallanes
+  escapeSceneName: nivelHernando
 --- !u!1 &786046755
 GameObject:
   m_ObjectHideFlags: 0

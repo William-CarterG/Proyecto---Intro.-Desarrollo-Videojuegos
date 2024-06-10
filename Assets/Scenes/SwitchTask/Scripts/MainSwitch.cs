@@ -16,6 +16,7 @@ public class MainSwitch : MonoBehaviour
         onCount = onCount + points;
         if (onCount == switchCount) 
         {
+            PlayerPrefs.SetString("SwitchPuzzleComplete", "true");
             winText.SetActive(true);
         }
     }

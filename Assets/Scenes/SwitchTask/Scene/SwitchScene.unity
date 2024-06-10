@@ -596,6 +596,7 @@ GameObject:
   - component: {fileID: 1580540078}
   - component: {fileID: 1580540077}
   - component: {fileID: 1580540076}
+  - component: {fileID: 1580540079}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -677,6 +678,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1580540079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1580540075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdb52e0c8ed731c4c9c430514478781b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  escapeSceneName: EntradaBaquedano
 --- !u!1 &1885052544
 GameObject:
   m_ObjectHideFlags: 0
