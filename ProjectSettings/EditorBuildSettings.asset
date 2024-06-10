@@ -68,4 +68,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SwitchTask/Scene/SwitchScene.unity
     guid: 6a4248a249f129841bab925d3da93172
+  - enabled: 1
+    path: Assets/Scenes/WireTask/Scene/WireScene.unity
+    guid: 4ee26644b5f84494484375097294dd45
   m_configObjects: {}
