@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.UIElements;
 
 public class PowerUpsScript : MonoBehaviour
 {
@@ -13,10 +15,29 @@ public class PowerUpsScript : MonoBehaviour
     private float watchDuration = 3f, watchCooldown = 30f, startOfWatch;
     private bool UsingSneakers = false;
     private float SneakersDuration = 10f, Starttimer, speedRateUp = 1.5f;
+    private PlayerHealth healthScript;
+    private float shootingCooldown = 15.0f, startOfTaser;
+    private bool canShoot = true;
+    public GameObject proyectile;
+    private GameObject ui;
+    private float volantinTimer, volantinDuration = 10.0f;
+    private bool isUsingVolantin = false;
+    private GameObject Knife, Watch, Taser;
 
     // Start is called before the first frame update
     void Start()
     {
+        ui = GameObject.Find("PowerUps");
+        if (ui != null)
+        {
+            Knife = ui.transform.Find("PUKnife").gameObject;
+            Watch = ui.transform.Find("PUWatch").gameObject;
+            Taser = ui.transform.Find("PUTaserGun").gameObject;
+            Knife.SetActive(false);
+            Watch.SetActive(false);
+            Taser.SetActive(false);
+        }
+        healthScript = GetComponent<PlayerHealth>();
         controllerScript = GetComponent<PlayerController>();
         if (collectedPowerUps.Count > 0)
         {
@@ -29,7 +50,10 @@ public class PowerUpsScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.I) && !isUsingSomething())
         {
-            ChangePU();
+            if(collectedPowerUps.Count > 0)
+            {
+                ChangePU();
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -48,6 +72,12 @@ public class PowerUpsScript : MonoBehaviour
                 isUsingWatch = true;
                 startOfWatch = Time.time;
                 canUseWatch = false;
+            }
+            else if (powerUp == "PUTaserGun" && canShoot)
+            {
+                canShoot = false;
+                startOfTaser = Time.time;
+                shoot(moveHorizontal, moveVertical);
             }
         }
 
@@ -75,6 +105,23 @@ public class PowerUpsScript : MonoBehaviour
             else if (!isUsingWatch && ((Time.time - startOfWatch) > watchCooldown))
             {
                 canUseWatch = true;
+            }
+        }
+
+        if (!canShoot)
+        {
+            if ((Time.time - startOfTaser) > shootingCooldown)
+            {
+                canShoot = true;
+            }
+        }
+
+        if (isUsingVolantin)
+        {
+            if ((Time.time - volantinTimer) > volantinDuration)
+            {
+                isUsingVolantin = false;
+                healthScript.setInvulnerable(false);
             }
         }
     }
@@ -107,6 +154,26 @@ public class PowerUpsScript : MonoBehaviour
         {
             settedPowerUp = (settedPowerUp + 1) % collectedPowerUps.Count;
             powerUp = collectedPowerUps[settedPowerUp];
+            setUI();
+        }
+    }
+
+    void setUI()
+    {
+        Knife.SetActive(false);
+        Watch.SetActive(false);
+        Taser.SetActive(false);
+        if(powerUp == "PUKnife")
+        {
+            Knife.SetActive(true);
+        }
+        else if(powerUp == "PUWatch")
+        {
+            Watch.SetActive(true);
+        }
+        else
+        {
+            Taser.SetActive(true);
         }
     }
 
@@ -120,10 +187,56 @@ public class PowerUpsScript : MonoBehaviour
         return isUsingWatch || isUsingKnife;
     }
 
-    public void UseSneaker()
+    void UseSneaker()
     {
         UsingSneakers = true;
         Starttimer = Time.time;
         controllerScript.multiplySpeed(speedRateUp);
+    }
+
+    void UseHotDog()
+    {
+        healthScript.RecuperateDamage(1);
+    }
+
+    void UseVolantin()
+    {
+        healthScript.setInvulnerable(true);
+        isUsingVolantin = true;
+        volantinTimer = Time.time;
+    }
+
+    public void UseConsumable(string name)
+    {
+        if(CheckIfStartsWith(name, "ConsumableSneakers"))
+        {
+            UseSneaker();
+        }
+        else if(CheckIfStartsWith(name, "ConsumableHotDog"))
+        {
+            UseHotDog();
+        }
+        else if (CheckIfStartsWith(name, "ConsumableVolantin"))
+        {
+            UseVolantin();
+        }
+
+    }
+
+    public bool CheckIfStartsWith(string input, string start)
+    {
+        if (input.Length >= start.Length)
+        {
+            return input.StartsWith(start, System.StringComparison.Ordinal);
+        }
+        return false;
+    }
+
+    private void shoot(float horizontal, float vertical)
+    {
+        Vector3 direction = new Vector3(horizontal, vertical, 0);
+        direction.Normalize();
+        GameObject newObject = Instantiate(proyectile, transform.position + direction * 2, transform.rotation);
+        newObject.GetComponent<proyectileScript>().setDirection(direction);
     }
 }
