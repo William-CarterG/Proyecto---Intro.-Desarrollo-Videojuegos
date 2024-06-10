@@ -39,9 +39,9 @@ public class CollectedScript : MonoBehaviour
                 powerUps.Add(collectibleScript.Name);
                 setPowerUps();
             }
-            if (CheckIfSneakers(collectibleScript.Name))
+            if (CheckIfConsumable(collectibleScript.Name))
             {
-                PUScript.UseSneaker();
+                PUScript.UseConsumable(collectibleScript.Name);
             }
 
             collectibleScript.collected();
@@ -217,14 +217,15 @@ public class CollectedScript : MonoBehaviour
     }
 
 
-    public bool CheckIfSneakers(string input)
+    public bool CheckIfConsumable(string input)
     {
-        if (input.Length >= 18)
+        if (input.Length >= 10)
         {
-            return input.StartsWith("ConsumableSneakers", System.StringComparison.Ordinal);
+            return input.StartsWith("Consumable", System.StringComparison.Ordinal);
         }
         return false;
     }
+
     public void setPowerUps()
     {
         if (powerUps.Count > 0)
