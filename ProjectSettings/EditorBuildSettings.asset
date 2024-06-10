@@ -53,4 +53,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Nivel-Hernando_de_magallanes/BajoHernandoDeMagallanes.unity
     guid: 79251ddd5f2f6f14790d131016e16b11
+  - enabled: 1
+    path: Assets/Scenes/GameWon.unity
+    guid: bc88369b1f5d24d5889b502e463d040f
+  - enabled: 1
+    path: Assets/Scenes/Nivel-Baquedano/BaquedanoSection1.unity
+    guid: 3ba5295e085b841b28e091ee76257ea3
+  - enabled: 1
+    path: Assets/Scenes/Nivel-Baquedano/BaquedanoSection2.unity
+    guid: 24bce87ceee8d4ebcac8103cb645ef8a
+  - enabled: 1
+    path: Assets/Scenes/Nivel-Baquedano/EntradaBaquedano.unity
+    guid: e7ae1c4899ae54e4dbdd796d504a5c08
   m_configObjects: {}
