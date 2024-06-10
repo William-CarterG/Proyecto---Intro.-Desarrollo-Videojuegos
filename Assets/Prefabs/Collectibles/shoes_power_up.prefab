@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e261a9f0d6d893841a4eceebaa23eb80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: ConsumableSneakers1
+  Name: ConsumableSneakers47
 --- !u!60 &4107939948359933880
 PolygonCollider2D:
   m_ObjectHideFlags: 0
