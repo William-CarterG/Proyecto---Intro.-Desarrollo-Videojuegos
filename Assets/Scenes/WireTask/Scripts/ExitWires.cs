@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneChanger : MonoBehaviour
+public class SceneChangerWires : MonoBehaviour
 {
-    public string escapeSceneName = "nivelHernando";
+    public string escapeSceneName = "EntradaBaquedano";
 
     void Update()
     {
@@ -11,8 +11,8 @@ public class SceneChanger : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             // Establecer las coordenadas para la posición (-14, -3.8)
-            PlayerPrefs.SetFloat("PlayerPositionX", -14f);
-            PlayerPrefs.SetFloat("PlayerPositionY", -3.8f);
+            PlayerPrefs.SetFloat("PlayerPositionX", -20f);
+            PlayerPrefs.SetFloat("PlayerPositionY", -14f);
             PlayerPrefs.Save();
 
             // Cargar la escena especificada para la tecla P

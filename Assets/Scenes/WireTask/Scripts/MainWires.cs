@@ -16,6 +16,7 @@ public class MainWires : MonoBehaviour
         onCount = onCount + points;
         if (onCount == switchCount) 
         {
+            PlayerPrefs.SetString("WiresPuzzleComplete", "true");
             winText.SetActive(true);
         }
     }

@@ -10,6 +10,12 @@ public class GameOverHappenings : MonoBehaviour
         PlayerPrefs.DeleteKey("CheckpointItems");
         PlayerPrefs.DeleteKey("LevelInventory");
         PlayerPrefs.DeleteKey("CablePuzzleComplete");
+        PlayerPrefs.DeleteKey("SwitchPuzzleComplete");
+        PlayerPrefs.DeleteKey("WiresPuzzleComplete");
+        PlayerPrefs.DeleteKey("PlayerPositionX");
+        PlayerPrefs.DeleteKey("PlayerPositionY");
+        PlayerPrefs.DeleteKey("PoemPuzzleComplete");
+        
     }
 
     // Update is called once per frame
