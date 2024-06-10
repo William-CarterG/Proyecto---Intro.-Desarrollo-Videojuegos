@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class proyectileScript : MonoBehaviour
+public class TaserProyectileScript : MonoBehaviour
 {
     public float speed = 5.0f;
     public float stunAmount = 5.0f;
@@ -11,13 +11,13 @@ public class proyectileScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-       transform.position += direction * speed * Time.deltaTime;
+        transform.position += direction * speed * Time.deltaTime;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -25,7 +25,7 @@ public class proyectileScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             EnemyScript script = collision.gameObject.GetComponent<EnemyScript>();
-            if(script != null)
+            if (script != null)
             {
                 script.stun(stunAmount);
             }

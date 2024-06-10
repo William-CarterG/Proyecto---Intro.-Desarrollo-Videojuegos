@@ -237,6 +237,6 @@ public class PowerUpsScript : MonoBehaviour
         Vector3 direction = new Vector3(horizontal, vertical, 0);
         direction.Normalize();
         GameObject newObject = Instantiate(proyectile, transform.position + direction * 2, transform.rotation);
-        newObject.GetComponent<proyectileScript>().setDirection(direction);
+        newObject.GetComponent<TaserProyectileScript>().setDirection(direction);
     }
 }
