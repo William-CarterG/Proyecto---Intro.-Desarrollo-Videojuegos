@@ -39,12 +39,12 @@ EditorBuildSettings:
     path: Assets/Scenes/PuzzleS/CablePuzzleCompleted.unity
     guid: 427d7d0adc2da46798d298839807d5b7
   - enabled: 1
-    path: Assets/Scenes/Nivel-Hernando_de_magallanes/nivelHernando1.unity
+    path: Assets/Scenes/test/nivelHernando1.unity
     guid: c76f3a83e94eb2242adcffc7137b6b4e
   - enabled: 1
-    path: Assets/Scenes/Nivel-Hernando_de_magallanes/TestPincoya.unity
+    path: Assets/Scenes/test/TestPincoya.unity
     guid: 328af155b86107746b5c91537805420c
   - enabled: 1
-    path: Assets/Scenes/Nivel-Hernando_de_magallanes/TestCaleuche.unity
+    path: Assets/Scenes/test/TestCaleuche.unity
     guid: 22caab63204489843942dbf1e7d65ef0
   m_configObjects: {}
