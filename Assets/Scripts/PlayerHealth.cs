@@ -11,6 +11,7 @@ public class PlayerHealth : MonoBehaviour
     private GameObject[] hearts;
     public GameObject HealthMeter;
     public AudioClip hitSound; // Clip de sonido para el golpe
+    private bool invulnerable = false;
 
     void Start()
     {
@@ -59,6 +60,21 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    public void setInvulnerable(bool state)
+    {
+        invulnerable = state;
+    }
+
+    public void RecuperateDamage(int recuperatedAmount)
+    {
+        if (currentHealth < 5)
+        {
+            currentHealth = Mathf.Min(recuperatedAmount+currentHealth, 5);
+            UpdateHealthUI();
+            PlayerPrefs.SetInt("PlayerHealthActual", currentHealth);
+        }
+    }
+
     // Método para actualizar el UI de los corazones
     void UpdateHealthUI()
     {
@@ -71,6 +87,11 @@ public class PlayerHealth : MonoBehaviour
     // Ajuste para colisiones en un contexto 2D
     void OnCollisionEnter2D(Collision2D collision)
     {
+        if (invulnerable)
+        {
+            return;
+        }
+
         if (collision.gameObject.CompareTag("Enemy"))
         {
             Debug.Log("Collision with enemy!");

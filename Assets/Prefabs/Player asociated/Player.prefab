@@ -345,7 +345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerUp: 
---- !u!114 &-3991161896825922128
+
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -357,6 +357,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2119c0cdaecefb4089b9e239e61784f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+
+  proyectile: {fileID: 4775361705024112321, guid: 7e4e3e4a76804e148b4a046c7988f376, type: 3}
+
 --- !u!82 &2699196670661455247
 AudioSource:
   m_ObjectHideFlags: 0
