@@ -4,6 +4,7 @@ public class EnemyVisionCone : MonoBehaviour
 {
     public float rotationSpeed = 30f;  // Speed of rotation in degrees per second
     public int damage = 1;  // Amount of damage to apply
+    public AudioClip detectionSound; // Clip de sonido para la detección
     private Transform visionConeTransform;
 
     void Start()
@@ -39,7 +40,16 @@ public class EnemyVisionCone : MonoBehaviour
             if (playerHealth != null)
             {
                 playerHealth.TakeDamage(damage);
+                PlayDetectionSound(); // Reproducir el sonido de detección
             }
+        }
+    }
+
+    void PlayDetectionSound()
+    {
+        if (detectionSound != null)
+        {
+            AudioSource.PlayClipAtPoint(detectionSound, transform.position);
         }
     }
 }

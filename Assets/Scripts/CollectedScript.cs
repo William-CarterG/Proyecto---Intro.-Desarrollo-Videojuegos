@@ -67,6 +67,25 @@ public class CollectedScript : MonoBehaviour
             }
         }
     }
+
+    public void AddItem(string itemName)
+    {
+        if (!collectedItems.Contains(itemName))
+        {
+            collectedItems.Add(itemName);
+            Debug.Log("Item agregado al inventario: " + itemName);
+        }
+        else
+        {
+            Debug.Log("El item ya está en el inventario: " + itemName);
+        }
+    }
+
+
+    public bool HasAllCoins()
+    {
+        return collectedItems.Contains("Coin1") && collectedItems.Contains("Coin2") && collectedItems.Contains("Coin3");
+    }
     
     public bool CanAccessPuzzle()
     {

@@ -303,7 +303,7 @@ MonoBehaviour:
   startingHealth: 5
   currentHealth: 0
   HealthMeter: {fileID: 0}
-  hitSound: {fileID: 8300000, guid: 208c0a2bad744674fbe324d7a9a17e88, type: 3}
+  hitSound: {fileID: 8300000, guid: 7ae8272be472a104dae8335502695008, type: 3}
 --- !u!114 &8060022462628698500
 MonoBehaviour:
   m_ObjectHideFlags: 0

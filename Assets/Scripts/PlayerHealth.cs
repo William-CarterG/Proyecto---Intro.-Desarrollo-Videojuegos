@@ -13,8 +13,6 @@ public class PlayerHealth : MonoBehaviour
     public AudioClip hitSound; // Clip de sonido para el golpe
     private bool invulnerable = false;
 
-    private AudioSource audioSource; // Componente de AudioSource
-
     void Start()
     {
         HealthMeter = GameObject.Find("HealthMeter");
@@ -36,9 +34,6 @@ public class PlayerHealth : MonoBehaviour
         {
             currentHealth = PlayerPrefs.GetInt("PlayerHealthActual");
         }
-
-        // Obtener el componente AudioSource
-        audioSource = GetComponent<AudioSource>();
 
         // Actualizar el UI de la salud
         UpdateHealthUI();
@@ -124,9 +119,9 @@ public class PlayerHealth : MonoBehaviour
 
     void PlayHitSound()
     {
-        if (audioSource != null && hitSound != null)
+        if (hitSound != null)
         {
-            audioSource.PlayOneShot(hitSound);
+            AudioSource.PlayClipAtPoint(hitSound, transform.position);
         }
     }
 }

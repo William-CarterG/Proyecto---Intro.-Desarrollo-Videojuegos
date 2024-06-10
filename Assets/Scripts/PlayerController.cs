@@ -47,11 +47,11 @@ public class PlayerController : MonoBehaviour
 
         if (movement.magnitude > 0)
         {
-            // Verifica si el jugador ha cambiado de dirección
+            // Verifica si el jugador ha cambiado de direcciï¿½n
             if (movement != lastDirection)
             {
                 currentSpeed = speed; // Reinicia la velocidad actual
-                lastDirection = movement; // Actualiza la última dirección
+                lastDirection = movement; // Actualiza la ï¿½ltima direcciï¿½n
             }
 
             // Incrementa la velocidad actual
@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
 
             rb.velocity = movement * currentSpeed;
 
-            // Reproducir el sonido de carrera si no se está reproduciendo
+            // Reproducir el sonido de carrera si no se estï¿½ reproduciendo
             if (!isPlayingRunningSound)
             {
                 isPlayingRunningSound = true;
@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = Vector2.zero; // Detener el movimiento cuando no hay entrada de movimiento
             currentSpeed = speed; // Reinicia la velocidad actual
-            lastDirection = Vector2.zero; // Reinicia la última dirección
+            lastDirection = Vector2.zero; // Reinicia la ï¿½ltima direcciï¿½n
         }
     }
 
@@ -112,15 +112,11 @@ public class PlayerController : MonoBehaviour
             Debug.Log("ATURDIDO");
             StartCoroutine(StunPlayer());
         }
-        else
-        {
-            Debug.Log("CHOCA");
-        }
     }
 
     IEnumerator StunPlayer()
     {
-        // Guardar la posición inicial del jugador
+        // Guardar la posiciï¿½n inicial del jugador
         Vector2 initialPosition = transform.position;
 
         // Activar aturdimiento
@@ -129,16 +125,16 @@ public class PlayerController : MonoBehaviour
         // Detener el movimiento del jugador
         rb.velocity = Vector2.zero;
 
-        // Activar vibración de la cámara
+        // Activar vibraciï¿½n de la cï¿½mara
         StartCoroutine(CameraShake());
 
         // Esperar el tiempo de aturdimiento
         yield return new WaitForSeconds(stunDuration);
 
-        // Restablecer el estado del jugador después del aturdimiento
+        // Restablecer el estado del jugador despuï¿½s del aturdimiento
         isStunned = false;
 
-        // Restaurar la posición inicial del jugador
+        // Restaurar la posiciï¿½n inicial del jugador
         transform.position = initialPosition;
     }
 
@@ -164,7 +160,7 @@ public class PlayerController : MonoBehaviour
             yield return null;
         }
 
-        // Restablecer la posición y el tamaño de la cámara al final de la vibración
+        // Restablecer la posiciï¿½n y el tamaï¿½o de la cï¿½mara al final de la vibraciï¿½n
         Camera.main.transform.localPosition = originalPosition;
         Camera.main.orthographicSize = originalSize;
     }
