@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Main : MonoBehaviour
+public class MainSwitch : MonoBehaviour
 {
-    static public Main Instance;
+    static public MainSwitch Instance;
     public int switchCount;
     public GameObject winText;
     private int onCount = 0;

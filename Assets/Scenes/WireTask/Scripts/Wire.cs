@@ -34,7 +34,7 @@ public class Wire : MonoBehaviour
                 if (transform.parent.name.Equals(collider.transform.parent.name))
                 {
                     //count connections
-                    Main.Instance.SwitchChange(1);
+                    MainWires.Instance.SwitchChange(1);
 
 
                     //finish step

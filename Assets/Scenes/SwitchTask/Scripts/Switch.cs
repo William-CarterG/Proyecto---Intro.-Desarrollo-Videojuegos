@@ -15,7 +15,7 @@ public class Switch : MonoBehaviour
         up.SetActive(isUp);
         if (isOn)
         {
-            Main.Instance.SwitchChange(1);
+            MainSwitch.Instance.SwitchChange(1);
         }
         
     }
@@ -28,11 +28,11 @@ public class Switch : MonoBehaviour
         up.SetActive(isUp);
         if (isOn)
         {
-            Main.Instance.SwitchChange(1);
+            MainSwitch.Instance.SwitchChange(1);
         }
         else
         {
-            Main.Instance.SwitchChange(-1);
+            MainSwitch.Instance.SwitchChange(-1);
         }
     }
 }
