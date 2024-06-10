@@ -345,6 +345,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerUp: 
   proyectile: {fileID: 4775361705024112321, guid: 7e4e3e4a76804e148b4a046c7988f376, type: 3}
+  InvensibleSound: {fileID: 8300000, guid: b6b1018a8323cd140ae211ccf54159e5, type: 3}
 --- !u!82 &2699196670661455247
 AudioSource:
   m_ObjectHideFlags: 0

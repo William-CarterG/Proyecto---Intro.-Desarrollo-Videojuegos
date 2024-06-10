@@ -23,6 +23,7 @@ public class PowerUpsScript : MonoBehaviour
     private float volantinTimer, volantinDuration = 10.0f;
     private bool isUsingVolantin = false;
     private GameObject Knife, Watch, Taser;
+    public AudioClip InvensibleSound;
 
     // Start is called before the first frame update
     void Start()
@@ -122,6 +123,7 @@ public class PowerUpsScript : MonoBehaviour
             {
                 isUsingVolantin = false;
                 healthScript.setInvulnerable(false);
+
             }
         }
     }
@@ -218,6 +220,7 @@ public class PowerUpsScript : MonoBehaviour
         }
         else if (CheckIfStartsWith(name, "ConsumableVolantin"))
         {
+            PlayDetectionSound();
             UseVolantin();
         }
 
@@ -238,5 +241,12 @@ public class PowerUpsScript : MonoBehaviour
         direction.Normalize();
         GameObject newObject = Instantiate(proyectile, transform.position + direction * 2, transform.rotation);
         newObject.GetComponent<TaserProyectileScript>().setDirection(direction);
+    }
+    void PlayDetectionSound()
+    {
+        if (InvensibleSound != null)
+        {
+            AudioSource.PlayClipAtPoint(InvensibleSound, transform.position);
+        }
     }
 }
