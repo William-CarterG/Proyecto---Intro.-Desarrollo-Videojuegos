@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -24,6 +22,13 @@ public class PlayerController : MonoBehaviour
     public AudioClip crashSound; // Clip de sonido para el choque
     private bool isPlayingRunningSound = false;
 
+    public GameObject prefabToSpawnVolantin; // Referencia al prefab que deseas instanciar
+    public GameObject prefabToSpawnCompleto;
+    public GameObject prefabToSpawnKnife;
+    public GameObject prefabToSpawnAdiddas;
+    public GameObject prefabToSpawnTaser;
+    public GameObject prefabToSpawnRolex;
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -32,13 +37,41 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Backspace)){ 
+        if (Input.GetKeyDown(KeyCode.Backspace))
+        {
             SceneManager.LoadScene(0);
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
         }
+
+        // Instanciar prefabs al presionar las teclas correspondientes
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            Instantiate(prefabToSpawnVolantin, transform.position + Vector3.down * 2.5f, Quaternion.identity);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            Instantiate(prefabToSpawnCompleto, transform.position + Vector3.down * 2.5f, Quaternion.identity);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            Instantiate(prefabToSpawnKnife, transform.position + Vector3.down * 2.5f, Quaternion.identity);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            Instantiate(prefabToSpawnAdiddas, transform.position + Vector3.down * 2.5f, Quaternion.identity);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            Instantiate(prefabToSpawnTaser, transform.position + Vector3.down * 2.5f, Quaternion.identity);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            Instantiate(prefabToSpawnRolex, transform.position + Vector3.down * 1.5f , Quaternion.identity);
+        }
+
         if (!isStunned)
         {
             float moveHorizontal = Input.GetAxis("Horizontal");
@@ -55,11 +88,11 @@ public class PlayerController : MonoBehaviour
 
         if (movement.magnitude > 0)
         {
-            // Verifica si el jugador ha cambiado de direcci�n
+            // Verifica si el jugador ha cambiado de dirección
             if (movement != lastDirection)
             {
                 currentSpeed = speed; // Reinicia la velocidad actual
-                lastDirection = movement; // Actualiza la �ltima direcci�n
+                lastDirection = movement; // Actualiza la última dirección
             }
 
             // Incrementa la velocidad actual
@@ -68,7 +101,7 @@ public class PlayerController : MonoBehaviour
 
             rb.velocity = movement * currentSpeed;
 
-            // Reproducir el sonido de carrera si no se est� reproduciendo
+            // Reproducir el sonido de carrera si no se está reproduciendo
             if (!isPlayingRunningSound)
             {
                 isPlayingRunningSound = true;
@@ -80,7 +113,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = Vector2.zero; // Detener el movimiento cuando no hay entrada de movimiento
             currentSpeed = speed; // Reinicia la velocidad actual
-            lastDirection = Vector2.zero; // Reinicia la �ltima direcci�n
+            lastDirection = Vector2.zero; // Reinicia la última dirección
         }
     }
 
@@ -124,7 +157,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator StunPlayer()
     {
-        // Guardar la posici�n inicial del jugador
+        // Guardar la posición inicial del jugador
         Vector2 initialPosition = transform.position;
 
         // Activar aturdimiento
@@ -133,16 +166,16 @@ public class PlayerController : MonoBehaviour
         // Detener el movimiento del jugador
         rb.velocity = Vector2.zero;
 
-        // Activar vibraci�n de la c�mara
+        // Activar vibración de la cámara
         StartCoroutine(CameraShake());
 
         // Esperar el tiempo de aturdimiento
         yield return new WaitForSeconds(stunDuration);
 
-        // Restablecer el estado del jugador despu�s del aturdimiento
+        // Restablecer el estado del jugador después del aturdimiento
         isStunned = false;
 
-        // Restaurar la posici�n inicial del jugador
+        // Restaurar la posición inicial del jugador
         transform.position = initialPosition;
     }
 
@@ -168,7 +201,7 @@ public class PlayerController : MonoBehaviour
             yield return null;
         }
 
-        // Restablecer la posici�n y el tama�o de la c�mara al final de la vibraci�n
+        // Restablecer la posición y el tamaño de la cámara al final de la vibración
         Camera.main.transform.localPosition = originalPosition;
         Camera.main.orthographicSize = originalSize;
     }

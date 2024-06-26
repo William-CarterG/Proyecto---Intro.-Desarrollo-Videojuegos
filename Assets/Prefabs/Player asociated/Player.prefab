@@ -111,6 +111,7 @@ GameObject:
   - component: {fileID: 4053289266911555243}
   - component: {fileID: 577489938740787467}
   - component: {fileID: 2699196670661455247}
+  - component: {fileID: -6108212142205484120}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -226,6 +227,12 @@ MonoBehaviour:
   zoomAmount: 4
   runningSound: {fileID: 8300000, guid: 6846f1c5f57d78949b9d3e305a9bb056, type: 3}
   crashSound: {fileID: 8300000, guid: 44be735abe4912246b9d90fd82fbe3e0, type: 3}
+  prefabToSpawnVolantin: {fileID: 8250948795519101564, guid: d861edbcc84469e48a14fdb95b856074, type: 3}
+  prefabToSpawnCompleto: {fileID: 7542904216262670982, guid: c52736c35a330fa449dd7b4f63df5346, type: 3}
+  prefabToSpawnKnife: {fileID: 4403468170869537884, guid: c0f4066da57bc3943a5560f7c6e6a968, type: 3}
+  prefabToSpawnAdiddas: {fileID: 551480275870836445, guid: ebba3c51103262448b8d6086d368a421, type: 3}
+  prefabToSpawnTaser: {fileID: 7225857248317958055, guid: b27dc10fcbd346e46a9d3a380624c7e0, type: 3}
+  prefabToSpawnRolex: {fileID: 7045976055997240667, guid: 9f1368ade9cf48242bc18e93fd1d3399, type: 3}
 --- !u!70 &6744352224243214773
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -442,3 +449,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-6108212142205484120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8593065587739374870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2119c0cdaecefb4089b9e239e61784f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
