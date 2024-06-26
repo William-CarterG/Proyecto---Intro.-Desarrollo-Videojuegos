@@ -22,7 +22,7 @@ public class cambioDeEscena : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Keypad4))
         {
-            CambiarEscena(0); // Cambiar a la escena 0
+            CambiarEscena(22); // Cambiar a la escena 0
         }
 
     }
