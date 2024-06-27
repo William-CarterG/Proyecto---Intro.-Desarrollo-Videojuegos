@@ -11,36 +11,63 @@ public class Caleuche : MonoBehaviour
     public bool vertical;
     public bool horizontal;
     public AudioClip fireSound; // Clip de sonido para el disparo
+    public float detectionDistanceY = 11f; // Distancia de detección en el eje y
+    public float detectionDistanceX = 23f;
+    public float detectionDistanceXHorizontal = 2.5f;
+    public float detectionDistanceYVertical = 2.5f;
 
+    private Transform playerTransform; // Referencia al transform del jugador
     private float nextFireTime;
 
     void Start()
     {
         // Inicializar el temporizador de disparo
         nextFireTime = Time.time;
+        // Obtener la referencia al jugador
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void Update()
     {
-        // Verificar si es hora de disparar
-        if (Time.time > nextFireTime)
+        if (playerTransform == null)
+            return;
+
+        // Verificar la posición del jugador
+        float distanceToPlayerY = playerTransform.position.y - transform.position.y;
+        float distanceToPlayerX = playerTransform.position.x - transform.position.x;
+        float distanceToPlayerXHorizontal = Mathf.Abs(playerTransform.position.x - transform.position.x);
+        float distanceToPlayerYVertical = Mathf.Abs(playerTransform.position.y - transform.position.y);
+
+        // Árbol de decisiones
+        if (IsTimeToFire())
         {
-            // Disparar un proyectil
-            if (horizontal)
+            if (horizontal && IsPlayerInHorizontalRange(distanceToPlayerX, distanceToPlayerYVertical))
             {
                 FireProjectileHorizontal();
             }
-            if (vertical)
+            else if (vertical && IsPlayerInVerticalRange(distanceToPlayerY, distanceToPlayerXHorizontal))
             {
                 FireProjectileVertical();
             }
 
-            // Reproducir el sonido de disparo
-            PlayFireSound();
-
             // Establecer el próximo tiempo de disparo
             nextFireTime = Time.time + 1f / fireRate;
         }
+    }
+
+    bool IsTimeToFire()
+    {
+        return Time.time > nextFireTime;
+    }
+
+    bool IsPlayerInHorizontalRange(float distanceToPlayerX, float distanceToPlayerYVertical)
+    {
+        return distanceToPlayerX > 0 && distanceToPlayerX <= detectionDistanceX && distanceToPlayerYVertical <= detectionDistanceYVertical;
+    }
+
+    bool IsPlayerInVerticalRange(float distanceToPlayerY, float distanceToPlayerXHorizontal)
+    {
+        return distanceToPlayerY > 0 && distanceToPlayerY <= detectionDistanceY && distanceToPlayerXHorizontal <= detectionDistanceXHorizontal;
     }
 
     void FireProjectileHorizontal()
@@ -59,6 +86,9 @@ public class Caleuche : MonoBehaviour
         rb1.AddForce(Vector2.left * projectileSpeed, ForceMode2D.Impulse);
         rb2.AddForce(Vector2.left * projectileSpeed, ForceMode2D.Impulse);
         rb3.AddForce(Vector2.left * projectileSpeed, ForceMode2D.Impulse);
+
+        // Reproducir el sonido de disparo
+        PlayFireSound();
     }
 
     void FireProjectileVertical()
@@ -77,6 +107,9 @@ public class Caleuche : MonoBehaviour
         rb1.AddForce(Vector2.up * projectileSpeed, ForceMode2D.Impulse);
         rb2.AddForce(Vector2.up * projectileSpeed, ForceMode2D.Impulse);
         rb3.AddForce(Vector2.up * projectileSpeed, ForceMode2D.Impulse);
+
+        // Reproducir el sonido de disparo
+        PlayFireSound();
     }
 
     void PlayFireSound()
