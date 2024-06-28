@@ -55,3 +55,6 @@ TagManager:
   - name: Flag
     uniqueID: 107007935
     locked: 0
+  - name: Elevator
+    uniqueID: 2513896051
+    locked: 0
