@@ -9461,8 +9461,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floatingTextPrefab: {fileID: 2218684659518725478, guid: d08f0747ac67003458e8da572a975406, type: 3}
-  canvas: {fileID: 0}
-  despawnDelay: 2
+  canvas: {fileID: 672317745}
+  despawnDelay: 3
   playerInside: 0
 --- !u!1 &1429127474
 GameObject:
