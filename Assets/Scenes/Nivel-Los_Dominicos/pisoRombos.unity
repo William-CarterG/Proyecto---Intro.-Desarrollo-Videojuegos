@@ -10479,6 +10479,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: nivelHernando
+  sceneIndex: 0
   sceneFader: {fileID: 0}
   PassCheckpoint: 0
 --- !u!61 &1394766662
@@ -11040,11 +11041,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 828811207283888122, guid: 011c742c77eb81144bffe48686dec102, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.52
+      value: 0.46
       objectReference: {fileID: 0}
     - target: {fileID: 828811207283888122, guid: 011c742c77eb81144bffe48686dec102, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.58
+      value: 0.13
       objectReference: {fileID: 0}
     - target: {fileID: 828811207283888122, guid: 011c742c77eb81144bffe48686dec102, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11109,6 +11110,10 @@ PrefabInstance:
     - target: {fileID: 3362574490073640296, guid: 011c742c77eb81144bffe48686dec102, type: 3}
       propertyPath: m_SortingLayerID
       value: -1066332367
+      objectReference: {fileID: 0}
+    - target: {fileID: 5579845971188998262, guid: 011c742c77eb81144bffe48686dec102, type: 3}
+      propertyPath: Used
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8593065587739374870, guid: 011c742c77eb81144bffe48686dec102, type: 3}
       propertyPath: m_Name

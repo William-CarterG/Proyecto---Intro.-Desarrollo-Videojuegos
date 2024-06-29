@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class changedScene : MonoBehaviour
+public class HiddenChangedScene : MonoBehaviour
 {
     public string sceneName;
     public int sceneIndex;
@@ -33,6 +33,7 @@ public class changedScene : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         // Verify if the object that entered the trigger has the tag "Player"
+        Debug.Log("Choca con el jugador");
         if (other.CompareTag("Player"))
         {
             Debug.Log("Player entered the trigger");
@@ -43,7 +44,7 @@ public class changedScene : MonoBehaviour
                 SavingScript.SaveAll(PassCheckpoint);
 
             }
-            SceneManager.LoadSceneAsync(sceneName);
+            SceneManager.LoadScene(sceneIndex);
             /*
             if (sceneFader != null)
             {
