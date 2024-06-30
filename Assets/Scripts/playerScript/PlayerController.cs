@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public float acceleration = 0.75f;
     private float currentSpeed;
     public float zoomAmount = 4f;
+    public bool checkNoItem;
     private Vector2 lastDirection;
 
     private bool isMoving;
@@ -47,30 +48,34 @@ public class PlayerController : MonoBehaviour
         }
 
         // Instanciar prefabs al presionar las teclas correspondientes
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (!checkNoItem)
         {
-            Instantiate(prefabToSpawnVolantin, transform.position + Vector3.down * 2.5f, Quaternion.identity);
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                Instantiate(prefabToSpawnVolantin, transform.position + Vector3.down * 2.5f, Quaternion.identity);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                Instantiate(prefabToSpawnCompleto, transform.position + Vector3.down * 2.5f, Quaternion.identity);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                Instantiate(prefabToSpawnKnife, transform.position + Vector3.down * 2.5f, Quaternion.identity);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                Instantiate(prefabToSpawnAdiddas, transform.position + Vector3.down * 2.5f, Quaternion.identity);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha5))
+            {
+                Instantiate(prefabToSpawnTaser, transform.position + Vector3.down * 2.5f, Quaternion.identity);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha6))
+            {
+                Instantiate(prefabToSpawnRolex, transform.position + Vector3.down * 1.5f, Quaternion.identity);
+            }
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            Instantiate(prefabToSpawnCompleto, transform.position + Vector3.down * 2.5f, Quaternion.identity);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            Instantiate(prefabToSpawnKnife, transform.position + Vector3.down * 2.5f, Quaternion.identity);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            Instantiate(prefabToSpawnAdiddas, transform.position + Vector3.down * 2.5f, Quaternion.identity);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            Instantiate(prefabToSpawnTaser, transform.position + Vector3.down * 2.5f, Quaternion.identity);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha6))
-        {
-            Instantiate(prefabToSpawnRolex, transform.position + Vector3.down * 1.5f , Quaternion.identity);
-        }
+ 
 
         if (!isStunned)
         {

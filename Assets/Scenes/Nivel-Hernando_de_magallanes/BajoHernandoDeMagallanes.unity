@@ -6310,6 +6310,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 908441698737350606, guid: 011c742c77eb81144bffe48686dec102, type: 3}
+      propertyPath: m_Volume
+      value: 0.522
+      objectReference: {fileID: 0}
     - target: {fileID: 2233818310085247320, guid: 011c742c77eb81144bffe48686dec102, type: 3}
       propertyPath: hearts.Array.data[0]
       value: 
