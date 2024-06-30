@@ -3521,13 +3521,17 @@ PrefabInstance:
       propertyPath: LevelStation
       value: Estacion Hernando de magallanes
       objectReference: {fileID: 0}
+    - target: {fileID: 6704649535037773337, guid: 95257fa3b46573a4bab13280564d03ff, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9070593972844710207, guid: 95257fa3b46573a4bab13280564d03ff, type: 3}
       propertyPath: m_Name
       value: Panel
       objectReference: {fileID: 0}
     - target: {fileID: 9070593972844710207, guid: 95257fa3b46573a4bab13280564d03ff, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5752,11 +5756,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4509864006754135215, guid: d7ee982b163e9f24f8e282d58721a057, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -17
       objectReference: {fileID: 0}
     - target: {fileID: 4509864006754135215, guid: d7ee982b163e9f24f8e282d58721a057, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 4509864006754135215, guid: d7ee982b163e9f24f8e282d58721a057, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6045,6 +6049,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: EntradaBaquedano
+  sceneIndex: 0
   sceneFader: {fileID: 0}
   PassCheckpoint: 0
 --- !u!61 &1521730951

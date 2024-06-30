@@ -1107,6 +1107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: BajoHernandoDeMagallanes
+  sceneIndex: 0
   sceneFader: {fileID: 0}
   PassCheckpoint: 0
 --- !u!1001 &1067285599
@@ -1641,11 +1642,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4509864006754135215, guid: d7ee982b163e9f24f8e282d58721a057, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -19
       objectReference: {fileID: 0}
     - target: {fileID: 4509864006754135215, guid: d7ee982b163e9f24f8e282d58721a057, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -22
       objectReference: {fileID: 0}
     - target: {fileID: 4509864006754135215, guid: d7ee982b163e9f24f8e282d58721a057, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
