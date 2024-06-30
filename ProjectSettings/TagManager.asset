@@ -47,6 +47,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: behind
+    uniqueID: 4222611143
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
@@ -55,4 +58,7 @@ TagManager:
     locked: 0
   - name: Flag
     uniqueID: 107007935
+    locked: 0
+  - name: Elevator
+    uniqueID: 2513896051
     locked: 0

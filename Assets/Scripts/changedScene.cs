@@ -6,16 +6,20 @@ using UnityEngine.SceneManagement;
 public class changedScene : MonoBehaviour
 {
     public string sceneName;
+    public int sceneIndex;
 
     public SceneFader sceneFader;
 
     public bool PassCheckpoint;
 
     private SaveLoadPlayerState SavingScript;
+    private PlayerPosition playerPositionScript;
 
     void Start()
     {
         SavingScript = GameObject.FindWithTag("Player").GetComponent<SaveLoadPlayerState>();
+        playerPositionScript = GameObject.FindWithTag("Player").GetComponent<PlayerPosition>();
+
         /*
         if (SavingScript == null)
         {
@@ -40,10 +44,18 @@ public class changedScene : MonoBehaviour
             {
                 Debug.Log("Saving player state");
                 SavingScript.SaveAll(PassCheckpoint);
-
             }
-            SceneManager.LoadSceneAsync(sceneName);
-            /*
+
+            if (playerPositionScript != null)
+            {
+                Debug.Log("Saving player position");
+                playerPositionScript.SavePosition();
+            }
+
+            // Guardar el nombre de la escena actual
+            PlayerPrefs.SetString("PreviousScene", SceneManager.GetActiveScene().name);
+            PlayerPrefs.Save();
+
             if (sceneFader != null)
             {
                 Debug.Log("Initiating scene fade to: " + sceneName);
@@ -51,9 +63,8 @@ public class changedScene : MonoBehaviour
             }
             else
             {
-                Debug.LogError("SceneFader is not set");
+                SceneManager.LoadSceneAsync(sceneName);
             }
-            */
         }
     }
 }
