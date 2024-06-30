@@ -12,6 +12,7 @@ TagManager:
   - Walls
   - CollectibleKey
   - Helper
+  - Horde
   layers:
   - Default
   - TransparentFX
