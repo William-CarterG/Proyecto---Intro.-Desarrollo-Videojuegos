@@ -1,45 +1,66 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class PlayerPosition : MonoBehaviour
 {
     private Vector2 lastPosition;
-    public bool Used;
+    private List<string> scenesToLoadPositionFrom; // Hacer la lista p煤blica
 
     void Start()
     {
-        // Cargar la posici髇 guardada al iniciar la escena
-        if (Used)
+        scenesToLoadPositionFrom = new List<string> { "Ascensor", "Grate", "CableLockedPuzzle", "CablePuzzleCompleted", "CableUnlockedPuzzle", "PuzzleScene" };
+
+        // Obtener la escena anterior
+        string previousScene = PlayerPrefs.GetString("PreviousScene", "");
+
+        // Cargar la posici贸n guardada al iniciar la escena si la escena anterior es v谩lida
+        if (scenesToLoadPositionFrom.Contains(previousScene))
         {
             Debug.Log("Llega aqui");
             if (PlayerPrefs.HasKey("PlayerX") && PlayerPrefs.HasKey("PlayerY"))
             {
-                
                 float x = PlayerPrefs.GetFloat("PlayerX");
                 float y = PlayerPrefs.GetFloat("PlayerY");
                 transform.position = new Vector2(x, y);
             }
         }
 
+        // Registrar el evento Application.quitting para ejecutar algo antes de salir del Play Mode
+        Application.quitting += OnApplicationQuitting;
     }
 
     void Update()
     {
-        // Actualizar la 鷏tima posici髇
+        // Actualizar la 煤ltima posici贸n
         lastPosition = transform.position;
 
-        // Opcional: Guardar posici髇 cuando se presiona una tecla o se detecta un cambio de escena
+        // Opcional: Guardar posici贸n cuando se presiona una tecla o se detecta un cambio de escena
         if (Input.GetKeyDown(KeyCode.E))
         {
             SavePosition();
         }
     }
 
+    private void OnApplicationQuitting()
+    {
+        // Aqu铆 puedes poner el c贸digo que deseas ejecutar justo antes de salir del Play Mode
+        Debug.Log("Ejecutando algo antes de salir del Play Mode");
+
+        PlayerPrefs.DeleteKey("PreviousScene");
+    }
+
     public void SavePosition()
     {
-        // Guardar la posici髇 actual
+        // Guardar la posici贸n actual
         PlayerPrefs.SetFloat("PlayerX", lastPosition.x);
         PlayerPrefs.SetFloat("PlayerY", lastPosition.y);
         PlayerPrefs.Save();
+    }
+
+    private void OnDestroy()
+    {
+        // Aseg煤rate de quitar el evento al destruir el objeto
+        Application.quitting -= OnApplicationQuitting;
     }
 }

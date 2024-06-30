@@ -335,6 +335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: piso1
+  sceneIndex: 0
   sceneFader: {fileID: 0}
   PassCheckpoint: 0
 --- !u!4 &271803504 stripped
@@ -1124,11 +1125,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec8091e23e311ab468bbfc0829a1c0c4, type: 3}
---- !u!1 &1017665350 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8593065587739374870, guid: 011c742c77eb81144bffe48686dec102, type: 3}
-  m_PrefabInstance: {fileID: 393532916}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1082334554
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2070,7 +2066,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 57
-      m_TileSpriteIndex: 57
+      m_TileSpriteIndex: 67
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -4290,7 +4286,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 26
-      m_TileSpriteIndex: 31
+      m_TileSpriteIndex: 58
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -4300,7 +4296,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 27
-      m_TileSpriteIndex: 27
+      m_TileSpriteIndex: 57
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -4310,7 +4306,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 28
-      m_TileSpriteIndex: 28
+      m_TileSpriteIndex: 31
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -5591,16 +5587,16 @@ Tilemap:
     m_Data: {fileID: -1163727975, guid: 8433e6578a882c34f91e814935f7b5d8, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: 119929939, guid: 8433e6578a882c34f91e814935f7b5d8, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -1078929626, guid: 8433e6578a882c34f91e814935f7b5d8, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 1034555078, guid: 8433e6578a882c34f91e814935f7b5d8, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: -1785493103, guid: 8433e6578a882c34f91e814935f7b5d8, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: 1060995780, guid: 8433e6578a882c34f91e814935f7b5d8, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: -85683700, guid: 8433e6578a882c34f91e814935f7b5d8, type: 3}
+    m_Data: {fileID: 1034555078, guid: 8433e6578a882c34f91e814935f7b5d8, type: 3}
   - m_RefCount: 37
     m_Data: {fileID: -1291501075, guid: 8433e6578a882c34f91e814935f7b5d8, type: 3}
   - m_RefCount: 2
@@ -5652,9 +5648,9 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: -1420727242, guid: 8433e6578a882c34f91e814935f7b5d8, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: 1606183507, guid: 8433e6578a882c34f91e814935f7b5d8, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+    m_Data: {fileID: -1078929626, guid: 8433e6578a882c34f91e814935f7b5d8, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: -85683700, guid: 8433e6578a882c34f91e814935f7b5d8, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 1347452573, guid: 8433e6578a882c34f91e814935f7b5d8, type: 3}
   - m_RefCount: 1
@@ -5671,8 +5667,8 @@ Tilemap:
     m_Data: {fileID: -1453884491, guid: 8433e6578a882c34f91e814935f7b5d8, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -1391724761, guid: 8433e6578a882c34f91e814935f7b5d8, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 1606183507, guid: 8433e6578a882c34f91e814935f7b5d8, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -1801463985, guid: 8433e6578a882c34f91e814935f7b5d8, type: 3}
   - m_RefCount: 1
@@ -6087,51 +6083,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneToLoad: Poem
   completed: 0
---- !u!1 &1921554411
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1921554413}
-  - component: {fileID: 1921554412}
-  m_Layer: 0
-  m_Name: PlayerPositionManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1921554412
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1921554411}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2d9fd2c86a8db047bb37f87d0ab144d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1017665350}
---- !u!4 &1921554413
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1921554411}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 319.6974, y: 269.42657, z: -4.4825687}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &1960230572 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3831774348308782503, guid: 95257fa3b46573a4bab13280564d03ff, type: 3}
@@ -6683,6 +6634,5 @@ SceneRoots:
   - {fileID: 1531486060}
   - {fileID: 2030170995}
   - {fileID: 1254445555}
-  - {fileID: 1921554413}
   - {fileID: 903515452}
   - {fileID: 2024831596}
