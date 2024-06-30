@@ -6619,6 +6619,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 34288317}
     m_Modifications:
+    - target: {fileID: 457370097495934011, guid: 59e567b2ed9194a99b27def2b233754c, type: 3}
+      propertyPath: m_text
+      value: "BaltaRat: \xA1Asegurate de revisar la alcantarilla! Muchas cosas se
+        esconden ah\xED."
+      objectReference: {fileID: 0}
     - target: {fileID: 2118882391368388969, guid: 59e567b2ed9194a99b27def2b233754c, type: 3}
       propertyPath: m_margin.w
       value: 2.2978773
