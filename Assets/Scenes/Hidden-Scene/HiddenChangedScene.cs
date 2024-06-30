@@ -44,6 +44,9 @@ public class HiddenChangedScene : MonoBehaviour
                 SavingScript.SaveAll(PassCheckpoint);
 
             }
+            PlayerPrefs.SetString("PreviousScene", SceneManager.GetActiveScene().name);
+            PlayerPrefs.Save();
+            
             SceneManager.LoadScene(sceneIndex);
             /*
             if (sceneFader != null)

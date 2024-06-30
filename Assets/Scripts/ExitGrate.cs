@@ -14,6 +14,7 @@ public class SceneChangerGrate : MonoBehaviour
             PlayerPrefs.SetFloat("PlayerPositionX", -15f);
             PlayerPrefs.SetFloat("PlayerPositionY", 1f);
             PlayerPrefs.Save();
+            
 
             // Cargar la escena especificada para la tecla P
             SceneManager.LoadScene(escapeSceneName);

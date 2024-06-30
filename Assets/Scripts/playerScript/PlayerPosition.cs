@@ -9,7 +9,7 @@ public class PlayerPosition : MonoBehaviour
 
     void Start()
     {
-        scenesToLoadPositionFrom = new List<string> { "Ascensor", "Grate", "CableLockedPuzzle", "CablePuzzleCompleted", "CableUnlockedPuzzle", "PuzzleScene" };
+        scenesToLoadPositionFrom = new List<string> { "Ascensor", "Grate", "CableLockedPuzzle", "CablePuzzleCompleted", "CableUnlockedPuzzle", "PuzzleScene", "Vias Tren", "Cables", "Baño", "Poem", "PoemDoor", "SwitchScene", "WireScene" };
 
         // Obtener la escena anterior
         string previousScene = PlayerPrefs.GetString("PreviousScene", "");
@@ -39,6 +39,13 @@ public class PlayerPosition : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             SavePosition();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            PlayerPrefs.SetString("PreviousScene", SceneManager.GetActiveScene().name);
+            PlayerPrefs.Save();
+            Debug.Log(SceneManager.GetActiveScene().name);
         }
     }
 
