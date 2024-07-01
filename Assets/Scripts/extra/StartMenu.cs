@@ -45,6 +45,10 @@ public class StartMenu : MonoBehaviour
     {
         SceneManager.LoadScene(19);
     }
+    public void StartGamefinal()
+    {
+        SceneManager.LoadScene(28);
+    }
     public void StartGameExit()
     {
         // Salir del juego
