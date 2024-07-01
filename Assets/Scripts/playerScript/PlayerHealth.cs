@@ -53,8 +53,7 @@ public class PlayerHealth : MonoBehaviour
         // Comprobar si el jugador ha perdido todas las vidas
         if (currentHealth <= 0)
         {
-            PlayerPrefs.DeleteKey("PlayerHealthActual");
-            PlayerPrefs.DeleteKey("MiniGameCompleted1");
+            
             Debug.Log("Game Over");
             SceneManager.LoadScene("GameOver");
         }
@@ -94,13 +93,8 @@ public class PlayerHealth : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("Collision with enemy!");
-
-            Debug.Log("Enemy  --> [ANTES]: " + PlayerPrefs.GetInt("MiniGameCompleted1"));
-
             int damageAmount = 1;
             TakeDamage(damageAmount);
-            Debug.Log("Enemy  --> [DESPUES]: " + PlayerPrefs.GetInt("MiniGameCompleted1"));
         }
     }
 

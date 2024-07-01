@@ -15,7 +15,9 @@ public class GameOverHappenings : MonoBehaviour
         PlayerPrefs.DeleteKey("PlayerPositionX");
         PlayerPrefs.DeleteKey("PlayerPositionY");
         PlayerPrefs.DeleteKey("PoemPuzzleComplete");
-        
+        PlayerPrefs.DeleteKey("MiniGameCompleted1");
+        PlayerPrefs.DeleteKey("PlayerHealthActual");
+        PlayerPrefs.DeleteKey("PreviousScene");
     }
 
     // Update is called once per frame

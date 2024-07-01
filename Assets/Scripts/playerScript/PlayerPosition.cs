@@ -15,7 +15,7 @@ public class PlayerPosition : MonoBehaviour
         string previousScene = PlayerPrefs.GetString("PreviousScene", "");
 
         // Cargar la posición guardada al iniciar la escena si la escena anterior es válida
-        if (scenesToLoadPositionFrom.Contains(previousScene))
+        if (scenesToLoadPositionFrom.Contains(previousScene) && !(SceneManager.GetActiveScene().name == "BajoHernandoDeMagallanes"))
         {
             Debug.Log("Llega aqui");
             if (PlayerPrefs.HasKey("PlayerX") && PlayerPrefs.HasKey("PlayerY"))

@@ -1813,6 +1813,67 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1001 &396808028
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3035488973003679036, guid: c52736c35a330fa449dd7b4f63df5346, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3035488973003679036, guid: c52736c35a330fa449dd7b4f63df5346, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -6.0227447
+      objectReference: {fileID: 0}
+    - target: {fileID: 3035488973003679036, guid: c52736c35a330fa449dd7b4f63df5346, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3035488973003679036, guid: c52736c35a330fa449dd7b4f63df5346, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3035488973003679036, guid: c52736c35a330fa449dd7b4f63df5346, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3035488973003679036, guid: c52736c35a330fa449dd7b4f63df5346, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3035488973003679036, guid: c52736c35a330fa449dd7b4f63df5346, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3035488973003679036, guid: c52736c35a330fa449dd7b4f63df5346, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3035488973003679036, guid: c52736c35a330fa449dd7b4f63df5346, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3035488973003679036, guid: c52736c35a330fa449dd7b4f63df5346, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7542904216262670982, guid: c52736c35a330fa449dd7b4f63df5346, type: 3}
+      propertyPath: m_Name
+      value: hotdog_power_up
+      objectReference: {fileID: 0}
+    - target: {fileID: 8099161119134600469, guid: c52736c35a330fa449dd7b4f63df5346, type: 3}
+      propertyPath: Name
+      value: ConsumableHotDog167
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c52736c35a330fa449dd7b4f63df5346, type: 3}
 --- !u!1 &486462964
 GameObject:
   m_ObjectHideFlags: 0
@@ -2620,6 +2681,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1208161572}
   m_CullTransparentMesh: 1
+--- !u!1001 &1370981894
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3035488973003679036, guid: c52736c35a330fa449dd7b4f63df5346, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.2855253
+      objectReference: {fileID: 0}
+    - target: {fileID: 3035488973003679036, guid: c52736c35a330fa449dd7b4f63df5346, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.4932181
+      objectReference: {fileID: 0}
+    - target: {fileID: 3035488973003679036, guid: c52736c35a330fa449dd7b4f63df5346, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3035488973003679036, guid: c52736c35a330fa449dd7b4f63df5346, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3035488973003679036, guid: c52736c35a330fa449dd7b4f63df5346, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3035488973003679036, guid: c52736c35a330fa449dd7b4f63df5346, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3035488973003679036, guid: c52736c35a330fa449dd7b4f63df5346, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3035488973003679036, guid: c52736c35a330fa449dd7b4f63df5346, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3035488973003679036, guid: c52736c35a330fa449dd7b4f63df5346, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3035488973003679036, guid: c52736c35a330fa449dd7b4f63df5346, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7542904216262670982, guid: c52736c35a330fa449dd7b4f63df5346, type: 3}
+      propertyPath: m_Name
+      value: hotdog_power_up (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8099161119134600469, guid: c52736c35a330fa449dd7b4f63df5346, type: 3}
+      propertyPath: Name
+      value: ConsumableHotDog142
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c52736c35a330fa449dd7b4f63df5346, type: 3}
 --- !u!1 &1613919590
 GameObject:
   m_ObjectHideFlags: 0
@@ -3629,3 +3751,5 @@ SceneRoots:
   - {fileID: 1764485722}
   - {fileID: 287355513}
   - {fileID: 2060974556}
+  - {fileID: 396808028}
+  - {fileID: 1370981894}
