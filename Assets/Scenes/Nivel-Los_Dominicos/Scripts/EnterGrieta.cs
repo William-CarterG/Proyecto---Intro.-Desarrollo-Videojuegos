@@ -27,6 +27,9 @@ public class EnterGrieta : MonoBehaviour
             if (ZoneScript.playerInside)
             {
                 SavingScript.SaveAll(false);
+                // Guardar el nombre de la escena actual
+                PlayerPrefs.SetString("PreviousScene", SceneManager.GetActiveScene().name);
+                PlayerPrefs.Save();
                 SceneManager.LoadScene(sceneToLoad);
                 PlayerPrefs.SetInt("SaveScene", SceneManager.GetActiveScene().buildIndex);
             }
