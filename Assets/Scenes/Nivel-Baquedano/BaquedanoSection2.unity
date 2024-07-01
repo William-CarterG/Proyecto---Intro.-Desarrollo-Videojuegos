@@ -20248,63 +20248,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &656562391
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 7128770262868243737, guid: b27dc10fcbd346e46a9d3a380624c7e0, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 3.6337574
-      objectReference: {fileID: 0}
-    - target: {fileID: 7128770262868243737, guid: b27dc10fcbd346e46a9d3a380624c7e0, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.59703493
-      objectReference: {fileID: 0}
-    - target: {fileID: 7128770262868243737, guid: b27dc10fcbd346e46a9d3a380624c7e0, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.035831556
-      objectReference: {fileID: 0}
-    - target: {fileID: 7128770262868243737, guid: b27dc10fcbd346e46a9d3a380624c7e0, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7128770262868243737, guid: b27dc10fcbd346e46a9d3a380624c7e0, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7128770262868243737, guid: b27dc10fcbd346e46a9d3a380624c7e0, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7128770262868243737, guid: b27dc10fcbd346e46a9d3a380624c7e0, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7128770262868243737, guid: b27dc10fcbd346e46a9d3a380624c7e0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7128770262868243737, guid: b27dc10fcbd346e46a9d3a380624c7e0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7128770262868243737, guid: b27dc10fcbd346e46a9d3a380624c7e0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7225857248317958055, guid: b27dc10fcbd346e46a9d3a380624c7e0, type: 3}
-      propertyPath: m_Name
-      value: taser_power_up
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b27dc10fcbd346e46a9d3a380624c7e0, type: 3}
 --- !u!1 &667316357
 GameObject:
   m_ObjectHideFlags: 0
@@ -22983,6 +22926,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7644672552834295258, guid: d861edbcc84469e48a14fdb95b856074, type: 3}
+      propertyPath: Name
+      value: ConsumableVolantin739
+      objectReference: {fileID: 0}
     - target: {fileID: 8250948795519101564, guid: d861edbcc84469e48a14fdb95b856074, type: 3}
       propertyPath: m_Name
       value: ConsumableVolantin
@@ -23599,7 +23546,6 @@ SceneRoots:
   - {fileID: 776302321}
   - {fileID: 1772716683}
   - {fileID: 708386403}
-  - {fileID: 656562391}
   - {fileID: 700757236}
   - {fileID: 536931268}
   - {fileID: 1343973114}

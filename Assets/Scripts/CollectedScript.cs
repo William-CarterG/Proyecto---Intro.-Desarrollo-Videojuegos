@@ -10,11 +10,10 @@ public class CollectedScript : MonoBehaviour
     public List<string> checkpointItems = new List<string>();
     public List<string> powerUps = new List<string>();
     private PowerUpsScript PUScript;
+    private List<string> defaultNames = new List<string> { "ConsumableHotDog1", "ConsumableSneakers47", "ConsumableVolantin" };
     // Start is called before the first frame update
     void Awake()
     {
-
-
         PUScript = GetComponent<PowerUpsScript>();
         LoadInventory();
         setPowerUps();
@@ -32,7 +31,10 @@ public class CollectedScript : MonoBehaviour
         {
             CollectibleScript collectibleScript = collision.GetComponent<CollectibleScript>();
 
-            collectedItems.Add(collectibleScript.Name);
+            if (!defaultNames.Contains(collectibleScript.Name))
+            {
+                collectedItems.Add(collectibleScript.Name);
+            }
             if (CheckIfPowerUp(collectibleScript.Name))
             {
                 powerUps.Add(collectibleScript.Name);

@@ -617,7 +617,7 @@ GameObject:
   - component: {fileID: 361162647}
   m_Layer: 0
   m_Name: Horde
-  m_TagString: Enemy
+  m_TagString: Horde
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3151,7 +3151,7 @@ MonoBehaviour:
   fireCount: 0
   Healthbar: {fileID: 1002753346}
   Fire: {fileID: 8373208412212589000, guid: e1f33517b0d1c6d4dbeb41c80d98c359, type: 3}
-  spawnerTime: 7
+  spawnerTime: 5
 --- !u!4 &1484143115
 Transform:
   m_ObjectHideFlags: 0

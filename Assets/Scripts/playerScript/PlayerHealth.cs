@@ -45,7 +45,6 @@ public class PlayerHealth : MonoBehaviour
         currentHealth -= damageAmount;
         UpdateHealthUI();
         PlayerPrefs.SetInt("PlayerHealthActual", currentHealth);
-        PlayerPrefs.SetInt("MiniGameCompleted1", 0);
 
         // Reproducir el sonido de golpe
         PlayHitSound();
@@ -96,13 +95,26 @@ public class PlayerHealth : MonoBehaviour
             int damageAmount = 1;
             TakeDamage(damageAmount);
         }
+        if (collision.gameObject.CompareTag("Horde"))
+        {
+            TakeDamage(currentHealth);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (invulnerable)
+        {
+            return;
+        }
+
         if (other.CompareTag("Enemy"))
         {
             TakeDamage(1);
+        }
+        if (other.CompareTag("Horde"))
+        {
+            TakeDamage(currentHealth);
         }
     }
 
