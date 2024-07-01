@@ -21318,6 +21318,67 @@ Transform:
   - {fileID: 336092293}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1067974277
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 551480275870836445, guid: ebba3c51103262448b8d6086d368a421, type: 3}
+      propertyPath: m_Name
+      value: shoes_power_up
+      objectReference: {fileID: 0}
+    - target: {fileID: 2464296956470612494, guid: ebba3c51103262448b8d6086d368a421, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 22.577503
+      objectReference: {fileID: 0}
+    - target: {fileID: 2464296956470612494, guid: ebba3c51103262448b8d6086d368a421, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -13.15434
+      objectReference: {fileID: 0}
+    - target: {fileID: 2464296956470612494, guid: ebba3c51103262448b8d6086d368a421, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2464296956470612494, guid: ebba3c51103262448b8d6086d368a421, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2464296956470612494, guid: ebba3c51103262448b8d6086d368a421, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2464296956470612494, guid: ebba3c51103262448b8d6086d368a421, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2464296956470612494, guid: ebba3c51103262448b8d6086d368a421, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2464296956470612494, guid: ebba3c51103262448b8d6086d368a421, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2464296956470612494, guid: ebba3c51103262448b8d6086d368a421, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2464296956470612494, guid: ebba3c51103262448b8d6086d368a421, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5408559073230038303, guid: ebba3c51103262448b8d6086d368a421, type: 3}
+      propertyPath: Name
+      value: ConsumableSneakers4782
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ebba3c51103262448b8d6086d368a421, type: 3}
 --- !u!1 &1102499896
 GameObject:
   m_ObjectHideFlags: 0
@@ -23555,3 +23616,4 @@ SceneRoots:
   - {fileID: 1977645199}
   - {fileID: 1185995711}
   - {fileID: 752775060}
+  - {fileID: 1067974277}

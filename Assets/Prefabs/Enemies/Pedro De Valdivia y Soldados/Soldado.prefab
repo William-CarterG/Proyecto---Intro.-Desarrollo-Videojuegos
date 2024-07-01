@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: -1066332367
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6f8dd6844c0797c48b3713ae48f3bf6a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c7f93b77e957637409bde642eaf0170b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -166,6 +166,4 @@ MonoBehaviour:
   separationDistance: 1
   followDistance: 1
   randomness: 1
-  trembleStrength: 3
-  trembleFrequency: 2
   target: {fileID: 8966249373107604481, guid: 7c8daf280ec86eb419fe3c2ccffc85f5, type: 3}
