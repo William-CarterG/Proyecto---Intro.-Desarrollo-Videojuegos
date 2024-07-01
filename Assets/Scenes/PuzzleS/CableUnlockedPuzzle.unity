@@ -776,23 +776,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardList:
   - cardName: valdivia
-    cardImage: {fileID: 21300000, guid: e0a79ddd302977548a74f2fc66a679db, type: 3}
+    cardImage: {fileID: 21300000, guid: dffa61813f47acf438a165b87b3596c2, type: 3}
   - cardName: tuetue
-    cardImage: {fileID: 21300000, guid: 4a84d7a321a832142ba00df4626a0169, type: 3}
+    cardImage: {fileID: 21300000, guid: 7e2a11e25b400094ca1ef245a912e3bd, type: 3}
   - cardName: pincoya
-    cardImage: {fileID: 21300000, guid: 7d41088183ac64e47a245e1d3c3d6170, type: 3}
+    cardImage: {fileID: 21300000, guid: 5c436deb59a3c3744a9d957dfb84a9cd, type: 3}
   - cardName: metro
     cardImage: {fileID: 21300000, guid: 5d19a1c4763824844a753b9e7e994582, type: 3}
   - cardName: bandera
     cardImage: {fileID: 21300000, guid: 631a6aa36ee8b4f4299390388c3388db, type: 3}
   - cardName: caleuche
-    cardImage: {fileID: 21300000, guid: 3d83d5578d1d8dc4db73a6b905bce945, type: 3}
+    cardImage: {fileID: 21300000, guid: dc4f4d2255cc5ff4db499e9854953081, type: 3}
   - cardName: herramientas
-    cardImage: {fileID: 353248370, guid: a053743617ccb4c4da4bc82a64956c7e, type: 3}
+    cardImage: {fileID: 21300000, guid: 1c658102ecc3640b887e28ab104852da, type: 3}
   - cardName: inspector
-    cardImage: {fileID: 1396262091, guid: a053743617ccb4c4da4bc82a64956c7e, type: 3}
+    cardImage: {fileID: -1154077142, guid: 41c496919029944499c2f306f1436c3a, type: 3}
   - cardName: escaleras
-    cardImage: {fileID: 2094864704, guid: a053743617ccb4c4da4bc82a64956c7e, type: 3}
+    cardImage: {fileID: 21300000, guid: dda243ce6b9204a7b9b1231107d0839a, type: 3}
   cardListToSort: []
   cardContainer: {fileID: 1994300883}
   cardPrefab: {fileID: 1773577601770787856, guid: 87dc18da3e748b5439c6547cd5e03899, type: 3}
